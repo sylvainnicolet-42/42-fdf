@@ -22,7 +22,17 @@ FDF_OBJ			= $(FDF_SRC:.c=.o)
 
 # SOURCES
 FDF_SRC			= ./srcs/fdf.c \
-				  ./srcs/print.c
+				  ./srcs/read_map.c \
+				  ./srcs/print.c \
+				  ./srcs/change_window_size.c \
+				  ./srcs/deal_key.c \
+				  ./srcs/draw.c \
+				  ./srcs/izometric.c \
+				  ./srcs/print_menu.c \
+				  ./srcs/set_param.c \
+				  ./srcs/utils/get_next_line.c \
+				  ./srcs/utils/get_next_line_utils.c \
+				  ./srcs/utils/ft_wdcounter.c \
 
 # COLORS
 _END=$'\x1b[0m'
