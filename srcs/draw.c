@@ -44,8 +44,8 @@ void	line(t_dot a, t_dot b, t_dot *param)
 
 void	draw(t_dot **matrix)
 {
-	int		y;
-	int		x;
+	int	y;
+	int	x;
 
 	print_menu(PRM);
 	y = 0;

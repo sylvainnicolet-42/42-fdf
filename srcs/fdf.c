@@ -18,8 +18,8 @@ void	set_default(t_dot *param)
 	param->z_scale = 1;
 	param->is_isometric = 1;
 	param->angle = 0.523599;
-	param->win_x = 2000;
-	param->win_y = 1000;
+	param->win_x = 800;
+	param->win_y = 800;
 	param->shift_x = param->win_x / 3;
 	param->shift_y = param->win_y / 3;
 	param->mlx_ptr = mlx_init();
@@ -27,13 +27,19 @@ void	set_default(t_dot *param)
 	mlx_new_window(param->mlx_ptr, param->win_x, param->win_y, "FDF");
 }
 
+/**
+ * Main function for the FDF application.
+ * @param argc Number of arguments passed to the application.
+ * @param argv Array of arguments passed to the application.
+ * @return Integer value indicating the success or failure of the application.
+ */
 int	main(int argc, char **argv)
 {
 	t_dot	**matrix;
 
 	if (argc == 2)
 	{
-		matrix = read_map(*++argv);
+		matrix = read_map(argv[1]);
 		set_default(&PRM);
 		draw(matrix);
 		mlx_key_hook(PRM.win_ptr, deal_key, matrix);
@@ -41,4 +47,5 @@ int	main(int argc, char **argv)
 	}
 	else
 		ft_print_error("Usage : ./fdf [file]");
+	return (0);
 }
