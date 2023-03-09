@@ -37,13 +37,19 @@
  */
 int	main(int argc, char **argv)
 {
-	t_dot	**matrix;
+	int		fd;
+	char	*line;
 
 	if (argc == 2)
 	{
-		matrix = read_map(argv[1]);
-		matrix_display(matrix);
-		matrix_clear(matrix);
+		fd = open(argv[1], O_RDONLY, 0);
+		line = get_next_line(fd);
+		while (line)
+		{
+			printf("%s", line);
+			free(line);
+			line = get_next_line(fd);
+		}
 	}
 	else
 		ft_print_error("Usage : ./fdf [file]");
