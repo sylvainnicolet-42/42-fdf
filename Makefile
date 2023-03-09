@@ -23,6 +23,8 @@ FDF_OBJ			= $(FDF_SRC:.c=.o)
 # SOURCES
 FDF_SRC			= ./srcs/fdf.c \
 				  ./srcs/read_map.c \
+				  ./srcs/matrix.c \
+				  ./srcs/matrix_clear.c \
 				  ./srcs/utils/print.c \
 				  ./srcs/utils/get_next_line.c \
 				  ./srcs/utils/get_next_line_utils.c \

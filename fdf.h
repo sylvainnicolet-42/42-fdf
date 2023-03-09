@@ -48,7 +48,12 @@ typedef struct s_dot
 	int			is_last;
 }	t_dot;
 
-t_dot	**read_map(char *file_name);
+t_dot	**read_map(char *file_path);
+t_dot	**matrix_create(char *file_path);
+void	matrix_display(t_dot **matrix);
+void	matrix_build(t_dot **matrix, char *file_path);
+void	matrix_clear(t_dot **matrix);
+
 //void	isometric(t_dot *dot, double angle);
 //void	draw(t_dot **matrix);
 //int		deal_key(int key, t_dot **matrix);

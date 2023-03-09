@@ -27,24 +27,7 @@
 //	mlx_new_window(param->mlx_ptr, param->win_x, param->win_y, "FDF");
 //}
 
-//void	display_matrix(t_dot **matrix)
-//{
-//	int	i;
-//	int	j;
-//
-//	i = 0;
-//	while (matrix[i])
-//	{
-//		j = 0;
-//		while (matrix[i][j].is_last == 0)
-//		{
-//			printf("x = %f, y = %f, z = %f\n", matrix[i][j].x, matrix[i][j].y, matrix[i][j].z);
-//			j++;
-//		}
-//		printf("x = %f, y = %f, z = %f\n", matrix[i][j].x, matrix[i][j].y, matrix[i][j].z);
-//		i++;
-//	}
-//}
+
 
 /**
  * Main function for the FDF application.
@@ -54,19 +37,13 @@
  */
 int	main(int argc, char **argv)
 {
-//	t_dot	**matrix;
-	int		fd;
-	char 	*line;
+	t_dot	**matrix;
 
 	if (argc == 2)
 	{
-//		matrix = read_map(argv[1]);
-//		display_matrix(matrix);
-		fd = open(argv[1], O_RDONLY, 0);
-		line = get_next_line(fd);
-		printf("%s", line);
-		free(line);
-//		printf("%s", argv[1]);
+		matrix = read_map(argv[1]);
+		matrix_display(matrix);
+		matrix_clear(matrix);
 	}
 	else
 		ft_print_error("Usage : ./fdf [file]");
