@@ -12,101 +12,109 @@
 
 #include "../../fdf.h"
 
-size_t	ft_gnl_strlen(char const *str)
+/**
+ * Return the line from the stash \n
+ * 1. Check if the stash is NULL \n
+ * 2. If there is no newline \n
+ * 		a. Put the stash in the line \n
+ * 		b. Free the stash \n
+ * 		c. Return the line \n
+ * 3. Get newline index \n
+ * 4. Put the stash until newline in the line \n
+ * 5. Update the stash with the rest \n
+ * 6. If the stash == '\0' \n
+ * 		a. Free the stash \n
+ * 7. Return the line \n
+ * @param char **stash
+ * @return char *line or NULL
+ */
+char	*gnl_get_line(char **stash)
 {
-	size_t	i;
+	int		newline_index;
+	char	*tmp;
+	char	*line;
 
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
-size_t	ft_gnl_strlcat(char	*dst, const char *src, size_t size)
-{
-	size_t	i;
-	size_t	len;
-
-	len = 0;
-	i = 0;
-	while (len < size && dst[len] != '\0')
-		len++;
-	if (!src)
-		return (len);
-	while (len + i + 1 < size && src[i] != '\0')
-	{
-		dst[len + i] = src[i];
-		i++;
-	}
-	if (len + i < size)
-		dst[len + i] = '\0';
-	while (src[i] != '\0')
-		i++;
-	return (len + i);
-}
-
-int	ft_read_from_buff(char **current_buff, int fd)
-{
-	char	*res;
-	char	*buff;
-	int		len;
-
-	buff = (char *)malloc(sizeof(char) * (1024 + 1));
-	if (!buff)
-		return (0);
-	res = *current_buff;
-	while (!ft_gnl_strchr(res, '\n'))
-	{
-		len = read(fd, buff, 1024);
-		if (len < 0 || (ft_gnl_strlen(res) == 0 && len == 0))
-		{
-			free(buff);
-			return (0);
-		}
-		if (len == 0)
-			break ;
-		buff[len] = '\0';
-		res = ft_gnl_strjoin(res, buff);
-		free(*current_buff);
-		*current_buff = res;
-	}
-	free(buff);
-	return (1);
-}
-
-char	*ft_init_new_buff(char *buff)
-{
-	char	*end;
-
-	end = ft_gnl_strchr(buff, '\n');
-	if (!end)
-	{
-		free(buff);
+	if (!stash || !*stash)
 		return (NULL);
+	if (!gnl_strchr(*stash, '\n'))
+	{
+		line = gnl_substr(*stash, 0, gnl_strlen(*stash));
+		free(*stash);
+		*stash = NULL;
+		return (line);
 	}
-	end = ft_gnl_strjoin(end + 1, NULL);
-	free(buff);
-	return (end);
+	newline_index = gnl_strlen(*stash) - gnl_strlen(gnl_strchr(*stash, '\n') + 1);
+	line = gnl_substr(*stash, 0, newline_index);
+	tmp = *stash;
+	*stash = gnl_substr(gnl_strchr(*stash, '\n'), 1, gnl_strlen(*stash));
+	free(tmp);
+	tmp = NULL;
+	if (**stash == '\0')
+	{
+		free(*stash);
+		*stash = NULL;
+	}
+	return (line);
 }
 
+/**
+ * Read fd until finding newline in the buffer \n
+ * 1. Check error if we read fd \n
+ * 2. Read fd a first time + add in the buffer \n
+ * 3. While bytes_read > 0 \n
+ * 		a. If the stash is empty, put the buffer in \n
+ * 		   Else, put the buffer at the end of the stash \n
+ * 		b. If we find newline in the buffer, break \n
+ * 		c. Read fd + add in the buffer \n
+ * 4. Free the buffer \n
+ * @param int fd (file descriptor)
+ * @param char *buffer
+ * @param char **stash
+ */
+void	gnl_read_line(int fd, char *buffer, char **stash)
+{
+	int		bytes_read;
+
+	bytes_read = read(fd, buffer, 1024);
+	buffer[bytes_read] = '\0';
+	while (bytes_read > 0)
+	{
+		if (!*stash)
+			*stash = gnl_substr(buffer, 0, bytes_read);
+		else
+			*stash = gnl_strjoin(*stash, buffer);
+		if (gnl_strchr(buffer, '\n') > 0)
+			break ;
+		bytes_read = read(fd, buffer, 1024);
+		buffer[bytes_read] = '\0';
+	}
+	free(buffer);
+	buffer = NULL;
+}
+
+/**
+ * Return the first line of file descriptor fd
+ * @param int fd (file descriptor)
+ * @return char *line or NULL
+ */
 char	*get_next_line(int fd)
 {
-	static char	*current_buff;
-	char		*current_line;
+	static char	*stash = NULL;
+	char		*buffer;
 
-	if (fd < 0 || 1024 <= 0)
-		return (NULL);
-	if (!ft_read_from_buff(&current_buff, fd))
+	if (fd < 0 || 1024 <= 0 || read(fd, 0, 0) < 0)
 	{
-		free(current_buff);
-		current_buff = NULL;
+		free(stash);
+		stash = NULL;
 		return (NULL);
 	}
-	current_line = ft_get_line(current_buff);
-	if (!current_line)
+	buffer = malloc(sizeof(char) * (1024 + 1));
+	if (!buffer)
+	{
+		free(buffer);
+		buffer = NULL;
 		return (NULL);
-	current_buff = ft_init_new_buff(current_buff);
-	return (current_line);
+	}
+	gnl_read_line(fd, buffer, &stash);
+	return (gnl_get_line(&stash));
 }

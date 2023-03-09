@@ -31,16 +31,12 @@
  * Get next line
 */
 char	*get_next_line(int fd);
-int		ft_read_from_buff(char **current_buff, int fd);
-char	*ft_get_line(char *current_buff);
-char	*ft_init_new_buff(char *current_buff);
-
-char	*ft_gnl_strchr(const char *s, int c);
-char	*ft_gnl_strjoin(char const *s1, char const *s2);
-void	*ft_gnl_calloc(size_t nmemb, size_t size);
-char	*ft_gnl_substr(char const *s, size_t len);
-size_t	ft_gnl_strlen(char const *str);
-size_t	ft_gnl_strlcat(char *dst, const char *src, size_t size);
+char	*gnl_get_line(char **stash);
+void	gnl_read_line(int fd, char *buffer, char **stash);
+size_t	gnl_strlen(char *str);
+char	*gnl_strjoin(char *s1, char *s2);
+char	*gnl_substr(char *s, unsigned int start, size_t len);
+char	*gnl_strchr(char *s, int c);
 
 int		ft_wdcounter(char const *str, char c);
 

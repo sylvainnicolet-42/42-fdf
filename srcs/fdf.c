@@ -55,14 +55,17 @@
 int	main(int argc, char **argv)
 {
 //	t_dot	**matrix;
-	int fd;
+	int		fd;
+	char 	*line;
 
 	if (argc == 2)
 	{
 //		matrix = read_map(argv[1]);
 //		display_matrix(matrix);
 		fd = open(argv[1], O_RDONLY, 0);
-		printf("%s", get_next_line(fd));
+		line = get_next_line(fd);
+		printf("%s", line);
+		free(line);
 //		printf("%s", argv[1]);
 	}
 	else
