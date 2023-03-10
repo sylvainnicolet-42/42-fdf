@@ -31,7 +31,7 @@ void	matrix_display(t_dot **matrix)
 	}
 }
 
-static int	matrix_set_dots(char *line, t_dot **matrix, int y)
+static void	matrix_set_dots(char *line, t_dot **matrix, int y)
 {
 	char	**dots;
 	int		x;
@@ -49,7 +49,6 @@ static int	matrix_set_dots(char *line, t_dot **matrix, int y)
 	}
 	free(dots);
 	matrix[y][x -1].is_last = 1;
-	return (x);
 }
 
 static int	matrix_nb_x(int fd)
@@ -124,6 +123,7 @@ void	matrix_build(t_dot **matrix, char *file_path)
 		line = get_next_line(fd);
 		y++;
 	}
+	free(matrix[y]);
 	matrix[y] = NULL;
 	close(fd);
 }
