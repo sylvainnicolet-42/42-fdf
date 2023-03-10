@@ -47,22 +47,21 @@ void	do_key(int key, t_param *params)
 		params->angle -= 0.05;
 }
 
-int	deal_key(int key, t_dot **matrix, t_param *params)
+int	deal_key(int key, t_param *params)
 {
-	if (is_key(key))
-	{
-		mlx_clear_window(params->mlx_ptr, params->win_ptr);
-		do_key(key, params);
-		print_menu(params);
-		draw(matrix, params);
-	}
-	if (key == 6 || key == 7 || key == 0 || key == 1 || key == 3)
-		new_window(key, matrix, params);
-	if (key == '5')
-	{
-		mlx_destroy_window(params->mlx_ptr, params->win_ptr);
-		free(matrix);
-		exit(0);
-	}
+//	(void) matrix;
+	(void) params;
+	printf("key: %d\n", key);
+//	if (is_key(key))
+//	{
+//		mlx_clear_window(params->mlx_ptr, params->win_ptr);
+//		do_key(key, params);
+//		print_menu(params);
+//		draw(matrix, params);
+//	}
+//	if (key == 123 || key == 124 || key == 125 || key == 126)
+//		new_window(key, matrix, params);
+	if (key == KEY_ESC)
+		fdf_close(params);
 	return (0);
 }

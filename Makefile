@@ -35,18 +35,8 @@ FDF_SRC			= ./srcs/fdf.c \
 				  ./srcs/izometric.c \
 				  ./srcs/change_window_size.c \
 				  ./srcs/deal_key.c \
-#FDF_SRC			= ./srcs/fdf.c \
-#				  ./srcs/read_map.c \
-#				  ./srcs/print.c \
-#				  ./srcs/change_window_size.c \
-#				  ./srcs/deal_key.c \
-#				  ./srcs/draw.c \
-#				  ./srcs/izometric.c \
-#				  ./srcs/print_menu.c \
-#				  ./srcs/set_param.c \
-#				  ./srcs/utils/get_next_line.c \
-#				  ./srcs/utils/get_next_line_utils.c \
-#				  ./srcs/utils/ft_wdcounter.c \
+				  ./srcs/mouse_hook.c \
+				  ./srcs/fdf_close.c \
 
 # COLORS
 _END=$'\x1b[0m'

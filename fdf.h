@@ -40,6 +40,31 @@ char	*gnl_strchr(char *s, int c);
 
 int		ft_wdcounter(char const *str, char c);
 
+enum e_key
+{
+	KEY_ESC = 53,
+	KEY_ARROW_LEFT = 123,
+	KEY_ARROW_RIGHT = 124,
+	KEY_ARROW_DOWN = 125,
+	KEY_ARROW_UP = 126
+};
+
+enum e_mouse
+{
+	MOUSE_SCROLL_DOWN = 4,
+	MOUSE_SCROLL_UP = 5
+};
+
+enum e_xcode_event
+{
+	ON_DESTROY = 17
+};
+
+enum e_xcode_mask
+{
+	KEY_PRESS_MASK = 2,
+};
+
 typedef struct s_dot
 {
 	float		x;
@@ -50,17 +75,17 @@ typedef struct s_dot
 
 typedef struct s_param
 {
-	int			color;
-	int			scale;
-	int			z_scale;
-	int			shift_x;
-	int			shift_y;
-	int			is_isometric;
-	double		angle;
-	int			win_x;
-	int			win_y;
-	void		*mlx_ptr;
-	void		*win_ptr;
+	t_dot	**matrix;
+	int		scale;
+	int		z_scale;
+	int		shift_x;
+	int		shift_y;
+	int		is_isometric;
+	double	angle;
+	int		win_x;
+	int		win_y;
+	void	*mlx_ptr;
+	void	*win_ptr;
 }	t_param;
 
 t_dot	**read_map(char *file_path);
@@ -72,8 +97,10 @@ void	draw(t_dot **matrix, t_param *params);
 void	print_menu(t_param *params);
 void	set_param(t_dot *a, t_dot *b, t_param *params);
 void	isometric(t_dot *dot, double angle);
-int		deal_key(int key, t_dot **matrix, t_param *params);
+int		deal_key(int key, t_param *params);
 void	new_window(int key, t_dot **matrix, t_param *params);
+int 	mouse_hook(int button, int x, int y, t_param *params);
+int		fdf_close(t_param *params);
 
 /**
  * Print in console
