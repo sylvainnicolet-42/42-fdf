@@ -43,7 +43,16 @@ int	main(int argc, char **argv)
 	{
 		matrix = read_map(argv[1]);
 		matrix_display(matrix);
-		matrix_clear(matrix);
+		int	i;
+
+		i = 0;
+		while (matrix[i])
+		{
+			free(matrix[i]);
+			i++;
+		}
+		free(matrix[i]);
+		free(matrix);
 	}
 	else
 		ft_print_error("Usage : ./fdf [file]");

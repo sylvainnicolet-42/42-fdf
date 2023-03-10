@@ -48,7 +48,6 @@ static int	matrix_set_dots(char *line, t_dot **matrix, int y)
 		x++;
 	}
 	free(dots);
-	free(line);
 	matrix[y][x -1].is_last = 1;
 	return (x);
 }
@@ -66,20 +65,18 @@ static int	matrix_nb_x(int fd)
 
 static int	matrix_nb_y(int fd)
 {
-	(void) fd;
-//	int 	nb_y;
-//	char	*line;
-//
-//	nb_y = 1;
-//	line = get_next_line(fd);
-//	while (line)
-//	{
-//		line = get_next_line(fd);
-//		nb_y++;
-//	}
-//	free(line);
-//	return (nb_y);
-	return (2);
+	int 	nb_y;
+	char	*line;
+
+	nb_y = 1;
+	line = get_next_line(fd);
+	while (line)
+	{
+		free(line);
+		line = get_next_line(fd);
+		nb_y++;
+	}
+	return (nb_y);
 }
 
 t_dot	**matrix_create(char *file_path)
@@ -123,10 +120,10 @@ void	matrix_build(t_dot **matrix, char *file_path)
 	while (line)
 	{
 		matrix_set_dots(line, matrix, y);
+		free(line);
 		line = get_next_line(fd);
 		y++;
 	}
-	free(line);
 	matrix[y] = NULL;
 	close(fd);
 }
