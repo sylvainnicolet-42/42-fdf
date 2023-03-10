@@ -21,46 +21,46 @@ int	is_key(int key)
 	key == 49 || key == 88 || key == 22);
 }
 
-void	do_key(int key, t_dot **matrix)
+void	do_key(int key, t_param *params)
 {
 	if (key == 24 || key == 69)
-		PRM.scale += 3;
+		params->scale += 3;
 	if (key == 27 || key == 78)
-		PRM.scale -= 3;
+		params->scale -= 3;
 	if (key == 91 || key == 28)
-		PRM.z_scale += 1;
+		params->z_scale += 1;
 	if (key == 84 || key == 19)
-		PRM.z_scale -= 1;
+		params->z_scale -= 1;
 	if (key == '~')
-		PRM.shift_y -= 10;
+		params->shift_y -= 10;
 	if (key == '}')
-		PRM.shift_y += 10;
+		params->shift_y += 10;
 	if (key == '{')
-		PRM.shift_x -= 10;
+		params->shift_x -= 10;
 	if (key == '|')
-		PRM.shift_x += 10;
+		params->shift_x += 10;
 	if (key == 49 || key == 87 || key == 23)
-		PRM.is_isometric = (PRM.is_isometric) ? 0 : 1;
+		params->is_isometric = (params->is_isometric) ? 0 : 1;
 	if (key == 86 || key == 21)
-		PRM.angle += 0.05;
+		params->angle += 0.05;
 	if (key == 88 || key == 22)
-		PRM.angle -= 0.05;
+		params->angle -= 0.05;
 }
 
-int	deal_key(int key, t_dot **matrix)
+int	deal_key(int key, t_dot **matrix, t_param *params)
 {
 	if (is_key(key))
 	{
-		mlx_clear_window(PRM.mlx_ptr, PRM.win_ptr);
-		do_key(key, matrix);
-		print_menu(PRM);
-		draw(matrix);
+		mlx_clear_window(params->mlx_ptr, params->win_ptr);
+		do_key(key, params);
+		print_menu(params);
+		draw(matrix, params);
 	}
 	if (key == 6 || key == 7 || key == 0 || key == 1 || key == 3)
-		new_window(key, matrix);
+		new_window(key, matrix, params);
 	if (key == '5')
 	{
-		mlx_destroy_window(PRM.mlx_ptr, PRM.win_ptr);
+		mlx_destroy_window(params->mlx_ptr, params->win_ptr);
 		free(matrix);
 		exit(0);
 	}

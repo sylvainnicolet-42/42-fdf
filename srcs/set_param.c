@@ -12,26 +12,26 @@
 
 #include "../fdf.h"
 
-void	zoom(t_dot *a, t_dot *b, t_dot *param)
+void	zoom(t_dot *a, t_dot *b, t_param *params)
 {
-	a->x *= param->scale;
-	a->y *= param->scale;
-	b->x *= param->scale;
-	b->y *= param->scale;
-	a->z *= param->z_scale;
-	b->z *= param->z_scale;
+	a->x *= params->scale;
+	a->y *= params->scale;
+	b->x *= params->scale;
+	b->y *= params->scale;
+	a->z *= params->z_scale;
+	b->z *= params->z_scale;
 }
 
-void	set_param(t_dot *a, t_dot *b, t_dot *param)
+void	set_param(t_dot *a, t_dot *b, t_param *params)
 {
-	zoom(a, b, param);
-	if (param->is_isometric)
+	zoom(a, b, params);
+	if (params->is_isometric)
 	{
-		isometric(a, param->angle);
-		isometric(b, param->angle);
+		isometric(a, params->angle);
+		isometric(b, params->angle);
 	}
-	a->x += param->shift_x;
-	a->y += param->shift_y;
-	b->x += param->shift_x;
-	b->y += param->shift_y;
+	a->x += params->shift_x;
+	a->y += params->shift_y;
+	b->x += params->shift_x;
+	b->y += params->shift_y;
 }

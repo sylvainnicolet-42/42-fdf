@@ -17,7 +17,7 @@ float	fmodule(float i)
 	return (i < 0) ? -i : i;
 }
 
-void	line(t_dot a, t_dot b, t_dot *param)
+static void	line(t_dot a, t_dot b, t_param *param)
 {
 	float	step_x;
 	float	step_y;
@@ -42,12 +42,12 @@ void	line(t_dot a, t_dot b, t_dot *param)
 	}
 }
 
-void	draw(t_dot **matrix)
+void	draw(t_dot **matrix, t_param *params)
 {
 	int	y;
 	int	x;
 
-	print_menu(PRM);
+	print_menu(params);
 	y = 0;
 	while (matrix[y])
 	{
@@ -55,9 +55,9 @@ void	draw(t_dot **matrix)
 		while (1)
 		{
 			if (matrix[y + 1])
-				line(matrix[y][x], matrix[y + 1][x], &PRM);
+				line(matrix[y][x], matrix[y + 1][x], params);
 			if (!matrix[y][x].is_last)
-				line(matrix[y][x], matrix[y][x + 1], &PRM);
+				line(matrix[y][x], matrix[y][x + 1], params);
 			if (matrix[y][x].is_last)
 				break ;
 			x++;

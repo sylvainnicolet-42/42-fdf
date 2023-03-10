@@ -15,8 +15,8 @@
 
 //# define BUFFER_SIZE 10
 //# define PRM matrix[0][0]
-//# define MAX(A, B) (A > B ? A : B)
-//# define MIN(A, B) (A > B ? B : A)
+# define MAX(A, B) (A > B ? A : B)
+# define MIN(A, B) (A > B ? B : A)
 
 /**
  * Libraries
@@ -48,18 +48,32 @@ typedef struct s_dot
 	int			is_last;
 }	t_dot;
 
+typedef struct s_param
+{
+	int			color;
+	int			scale;
+	int			z_scale;
+	int			shift_x;
+	int			shift_y;
+	int			is_isometric;
+	double		angle;
+	int			win_x;
+	int			win_y;
+	void		*mlx_ptr;
+	void		*win_ptr;
+}	t_param;
+
 t_dot	**read_map(char *file_path);
 t_dot	**matrix_create(char *file_path);
 void	matrix_display(t_dot **matrix);
 void	matrix_build(t_dot **matrix, char *file_path);
 void	matrix_clear(t_dot **matrix);
-
-//void	isometric(t_dot *dot, double angle);
-//void	draw(t_dot **matrix);
-//int		deal_key(int key, t_dot **matrix);
-//void	set_param(t_dot *a, t_dot *b, t_dot *param);
-//void	print_menu(t_dot param);
-//void	new_window(int key, t_dot **matrix);
+void	draw(t_dot **matrix, t_param *params);
+void	print_menu(t_param *params);
+void	set_param(t_dot *a, t_dot *b, t_param *params);
+void	isometric(t_dot *dot, double angle);
+int		deal_key(int key, t_dot **matrix, t_param *params);
+void	new_window(int key, t_dot **matrix, t_param *params);
 
 /**
  * Print in console

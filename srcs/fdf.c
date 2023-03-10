@@ -12,22 +12,26 @@
 
 #include "../fdf.h"
 
-//void	set_default(t_dot *param)
-//{
-//	param->scale = 20;
-//	param->z_scale = 1;
-//	param->is_isometric = 1;
-//	param->angle = 0.523599;
-//	param->win_x = 800;
-//	param->win_y = 800;
-//	param->shift_x = param->win_x / 3;
-//	param->shift_y = param->win_y / 3;
-//	param->mlx_ptr = mlx_init();
-//	param->win_ptr = \
-//	mlx_new_window(param->mlx_ptr, param->win_x, param->win_y, "FDF");
-//}
+t_param	*params_build()
+{
+	t_param *param;
 
-
+	param = malloc(sizeof(t_param));
+	if (!param)
+		ft_print_error("Malloc error");
+	param->scale = 20;
+	param->z_scale = 1;
+	param->is_isometric = 1;
+	param->angle = 0.523599;
+	param->win_x = 800;
+	param->win_y = 800;
+	param->shift_x = param->win_x / 3;
+	param->shift_y = param->win_y / 3;
+	param->mlx_ptr = mlx_init();
+	param->win_ptr = \
+	mlx_new_window(param->mlx_ptr, param->win_x, param->win_y, "FDF");
+	return (param);
+}
 
 /**
  * Main function for the FDF application.
@@ -38,11 +42,15 @@
 int	main(int argc, char **argv)
 {
 	t_dot	**matrix;
+	t_param *params;
 
 	if (argc == 2)
 	{
 		matrix = read_map(argv[1]);
-		matrix_display(matrix);
+		params = params_build();
+		draw(matrix, params);
+		mlx_key_hook(params->win_ptr, deal_key, matrix);
+		mlx_loop(params->mlx_ptr);
 		matrix_clear(matrix);
 	}
 	else

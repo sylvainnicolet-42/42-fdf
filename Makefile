@@ -29,6 +29,12 @@ FDF_SRC			= ./srcs/fdf.c \
 				  ./srcs/utils/get_next_line.c \
 				  ./srcs/utils/get_next_line_utils.c \
 				  ./srcs/utils/ft_wdcounter.c \
+				  ./srcs/draw.c \
+				  ./srcs/print_menu.c \
+				  ./srcs/set_param.c \
+				  ./srcs/izometric.c \
+				  ./srcs/change_window_size.c \
+				  ./srcs/deal_key.c \
 #FDF_SRC			= ./srcs/fdf.c \
 #				  ./srcs/read_map.c \
 #				  ./srcs/print.c \
