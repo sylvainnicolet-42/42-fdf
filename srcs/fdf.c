@@ -61,8 +61,8 @@ int	main(int argc, char **argv)
 	{
 		matrix = read_map(argv[1]);
 		params = params_build(matrix);
-		draw(matrix, params);
-		mlx_key_hook(params->win_ptr, deal_key, params);
+		draw(params);
+		mlx_key_hook(params->win_ptr, key_hook, params);
 		mlx_mouse_hook(params->win_ptr, mouse_hook, params);
 		mlx_hook(params->win_ptr, ON_DESTROY, KEY_PRESS_MASK, fdf_close, params);
 		mlx_loop(params->mlx_ptr);

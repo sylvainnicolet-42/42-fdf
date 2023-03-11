@@ -30,7 +30,7 @@ int	mouse_hook(int button, int x, int y, t_param *params)
 		if (button == MOUSE_SCROLL_UP)
 			params->scale -= 3;
 		print_menu(params);
-		draw(params->matrix, params);
+		draw(params);
 	}
 	return (0);
 }

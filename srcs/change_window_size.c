@@ -51,15 +51,15 @@ void	change_window_size(int key, t_param *params)
 		full_screen(params);
 }
 
-void	new_window(int key, t_dot **matrix, t_param *params)
-{
-	change_window_size(key, params);
-	mlx_destroy_window(params->mlx_ptr, params->win_ptr);
-	params->mlx_ptr = mlx_init();
-	params->win_ptr = mlx_new_window(params->mlx_ptr, params->win_x, params->win_y, "FDF");
-	params->shift_x = params->win_x / 3;
-	params->shift_y = params->win_y / 3;
-	draw(matrix, params);
-	mlx_key_hook(params->win_ptr, deal_key, matrix);
-	mlx_loop(params->mlx_ptr);
-}
+//void	new_window(int key, t_dot **matrix, t_param *params)
+//{
+//	change_window_size(key, params);
+//	mlx_destroy_window(params->mlx_ptr, params->win_ptr);
+//	params->mlx_ptr = mlx_init();
+//	params->win_ptr = mlx_new_window(params->mlx_ptr, params->win_x, params->win_y, "FDF");
+//	params->shift_x = params->win_x / 3;
+//	params->shift_y = params->win_y / 3;
+//	draw(params);
+//	mlx_key_hook(params->win_ptr, deal_key, matrix);
+//	mlx_loop(params->mlx_ptr);
+//}

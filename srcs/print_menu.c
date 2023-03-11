@@ -12,16 +12,17 @@
 
 #include "../fdf.h"
 
+static void	print_usage(t_param *params, int y, char *label, char *key)
+{
+	mlx_string_put(params->mlx_ptr, params->win_ptr, 25, y, WHITE, label);
+	mlx_string_put(params->mlx_ptr, params->win_ptr, 200, y, WHITE, key);
+}
+
 void	print_menu(t_param *params)
 {
-	char	*menu;
-
-	menu = "MOVE: up, down, left, right";
-	mlx_string_put(params->mlx_ptr, params->win_ptr, 10, 5, 0x03fc35, menu);
-	menu = "3D/2D MODE: space";
-	mlx_string_put(params->mlx_ptr, params->win_ptr, 10, 20, 0x03fc35, menu);
-	menu = "ZOOM: +, -";
-	mlx_string_put(params->mlx_ptr, params->win_ptr, 10, 35, 0x03fc35, menu);
-	menu = "Z-SCALE: 8, 2";
-	mlx_string_put(params->mlx_ptr, params->win_ptr, 10, 50, 0x03fc35, menu);
+	mlx_string_put(params->mlx_ptr, params->win_ptr, 10, 5, WHITE, "Usage");
+	print_usage(params, 35, "Move", "left up down right");
+	print_usage(params, 55, "Move", "a w s d");
+	print_usage(params, 75, "Zoom in", "scroll down");
+	print_usage(params, 95, "Zoom out", "scroll up");
 }

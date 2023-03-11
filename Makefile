@@ -34,7 +34,7 @@ FDF_SRC			= ./srcs/fdf.c \
 				  ./srcs/set_param.c \
 				  ./srcs/izometric.c \
 				  ./srcs/change_window_size.c \
-				  ./srcs/deal_key.c \
+				  ./srcs/key_hook.c \
 				  ./srcs/mouse_hook.c \
 				  ./srcs/fdf_close.c \
 

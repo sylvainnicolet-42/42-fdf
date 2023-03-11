@@ -13,8 +13,6 @@
 #ifndef FDF_H
 # define FDF_H
 
-//# define BUFFER_SIZE 10
-//# define PRM matrix[0][0]
 # define MAX(A, B) (A > B ? A : B)
 # define MIN(A, B) (A > B ? B : A)
 
@@ -40,13 +38,30 @@ char	*gnl_strchr(char *s, int c);
 
 int		ft_wdcounter(char const *str, char c);
 
+enum e_color
+{
+	BLACK = 0x000000,
+	WHITE = 0xFFFFFF,
+	RED = 0xFF0000,
+	GREEN = 0x00FF00,
+	BLUE = 0x0000FF,
+	YELLOW = 0xFFFF00,
+	PINK = 0xFF00FF,
+	CYAN = 0x00FFFF,
+	ORANGE = 0xFFA500,
+};
+
 enum e_key
 {
 	KEY_ESC = 53,
 	KEY_ARROW_LEFT = 123,
 	KEY_ARROW_RIGHT = 124,
 	KEY_ARROW_DOWN = 125,
-	KEY_ARROW_UP = 126
+	KEY_ARROW_UP = 126,
+	KEY_A = 0,
+	KEY_S = 1,
+	KEY_D = 2,
+	KEY_W = 13,
 };
 
 enum e_mouse
@@ -93,11 +108,11 @@ t_dot	**matrix_create(char *file_path);
 void	matrix_display(t_dot **matrix);
 void	matrix_build(t_dot **matrix, char *file_path);
 void	matrix_clear(t_dot **matrix);
-void	draw(t_dot **matrix, t_param *params);
+void	draw(t_param *params);
 void	print_menu(t_param *params);
 void	set_param(t_dot *a, t_dot *b, t_param *params);
 void	isometric(t_dot *dot, double angle);
-int		deal_key(int key, t_param *params);
+int		key_hook(int key, t_param *params);
 void	new_window(int key, t_dot **matrix, t_param *params);
 int 	mouse_hook(int button, int x, int y, t_param *params);
 int		fdf_close(t_param *params);

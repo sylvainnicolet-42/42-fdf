@@ -42,23 +42,23 @@ static void	line(t_dot a, t_dot b, t_param *param)
 	}
 }
 
-void	draw(t_dot **matrix, t_param *params)
+void	draw(t_param *params)
 {
 	int	y;
 	int	x;
 
 	print_menu(params);
 	y = 0;
-	while (matrix[y])
+	while (params->matrix[y])
 	{
 		x = 0;
 		while (1)
 		{
-			if (matrix[y + 1])
-				line(matrix[y][x], matrix[y + 1][x], params);
-			if (!matrix[y][x].is_last)
-				line(matrix[y][x], matrix[y][x + 1], params);
-			if (matrix[y][x].is_last)
+			if (params->matrix[y + 1])
+				line(params->matrix[y][x], params->matrix[y + 1][x], params);
+			if (!params->matrix[y][x].is_last)
+				line(params->matrix[y][x], params->matrix[y][x + 1], params);
+			if (params->matrix[y][x].is_last)
 				break ;
 			x++;
 		}
