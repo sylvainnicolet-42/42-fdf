@@ -62,6 +62,9 @@ enum e_key
 	KEY_S = 1,
 	KEY_D = 2,
 	KEY_W = 13,
+	KEY_P = 35,
+	KEY_E = 14,
+	KEY_R = 15,
 };
 
 enum e_mouse
@@ -80,6 +83,12 @@ enum e_xcode_mask
 	KEY_PRESS_MASK = 2,
 };
 
+enum e_projection
+{
+	VIEW_ISO = 0,
+	VIEW_TOP = 1,
+};
+
 typedef struct s_dot
 {
 	float		x;
@@ -95,7 +104,7 @@ typedef struct s_param
 	int		z_scale;
 	int		shift_x;
 	int		shift_y;
-	int		is_isometric;
+	int		projection;
 	double	angle;
 	int		win_x;
 	int		win_y;
@@ -105,16 +114,15 @@ typedef struct s_param
 
 t_dot	**read_map(char *file_path);
 t_dot	**matrix_create(char *file_path);
-void	matrix_display(t_dot **matrix);
 void	matrix_build(t_dot **matrix, char *file_path);
 void	matrix_clear(t_dot **matrix);
 void	draw(t_param *params);
 void	print_menu(t_param *params);
 void	set_param(t_dot *a, t_dot *b, t_param *params);
-void	isometric(t_dot *dot, double angle);
 int		key_hook(int key, t_param *params);
 void	new_window(int key, t_dot **matrix, t_param *params);
 int 	mouse_hook(int button, int x, int y, t_param *params);
+void	handle_event(t_param *params);
 int		fdf_close(t_param *params);
 
 /**

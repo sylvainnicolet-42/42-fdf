@@ -12,23 +12,44 @@
 
 #include "../fdf.h"
 
-static int	is_key(int key)
+/**
+ * Check if the button is one of the buttons we want to handle
+ * @param key
+ * @return int
+ */
+static int	is_button(int key)
 {
 	return (key == MOUSE_SCROLL_DOWN || key == MOUSE_SCROLL_UP);
 }
 
+/**
+ * Update the params according to the button pressed
+ * @param button
+ * @param params
+ */
+static void	update_params(int button, t_param *params)
+{
+	if (button == MOUSE_SCROLL_DOWN)
+		params->scale += 3;
+	if (button == MOUSE_SCROLL_UP)
+		params->scale -= 3;
+}
+
+/**
+ * Handle button press
+ * @param button
+ * @param params
+ * @return int
+ */
 int	mouse_hook(int button, int x, int y, t_param *params)
 {
 	(void) x;
 	(void) y;
 
-	if (is_key(button))
+	if (is_button(button))
 	{
 		mlx_clear_window(params->mlx_ptr, params->win_ptr);
-		if (button == MOUSE_SCROLL_DOWN)
-			params->scale += 3;
-		if (button == MOUSE_SCROLL_UP)
-			params->scale -= 3;
+		update_params(button, params);
 		print_menu(params);
 		draw(params);
 	}

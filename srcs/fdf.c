@@ -13,9 +13,9 @@
 #include "../fdf.h"
 
 /**
- * Function to build the parameters structure.
- * @param matrix The matrix of points.
- * @return Pointer to the parameters structure.
+ * Build the parameters structure
+ * @param matrix The matrix of t_dot
+ * @return Pointer to the parameters structure
  */
 t_param	*params_build(t_dot **matrix)
 {
@@ -29,11 +29,12 @@ t_param	*params_build(t_dot **matrix)
 	param->matrix = matrix;
 	param->scale = 20;
 	param->z_scale = 1;
-	param->is_isometric = 1;
-	param->angle = 0.523599;
+	param->projection = VIEW_ISO;
+//	param->angle = 0.523599;
+	param->angle = 1;
 	param->win_x = 800;
 	param->win_y = 800;
-	param->shift_x = param->win_x / 3;
+	param->shift_x = param->win_x / 2;
 	param->shift_y = param->win_y / 3;
 	mlx_ptr = mlx_init();
 	if (!mlx_ptr)
@@ -47,10 +48,10 @@ t_param	*params_build(t_dot **matrix)
 }
 
 /**
- * Main function for the FDF application.
- * @param argc Number of arguments passed to the application.
- * @param argv Array of arguments passed to the application.
- * @return Integer value indicating the success or failure of the application.
+ * Main function for the FDF application
+ * @param argc Number of arguments passed to the application
+ * @param argv Array of arguments passed to the application
+ * @return Integer value indicating the success or failure of the application
  */
 int	main(int argc, char **argv)
 {
@@ -62,9 +63,7 @@ int	main(int argc, char **argv)
 		matrix = read_map(argv[1]);
 		params = params_build(matrix);
 		draw(params);
-		mlx_key_hook(params->win_ptr, key_hook, params);
-		mlx_mouse_hook(params->win_ptr, mouse_hook, params);
-		mlx_hook(params->win_ptr, ON_DESTROY, KEY_PRESS_MASK, fdf_close, params);
+		handle_event(params);
 		mlx_loop(params->mlx_ptr);
 	}
 	else

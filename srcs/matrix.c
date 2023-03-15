@@ -12,25 +12,12 @@
 
 #include "../fdf.h"
 
-void	matrix_display(t_dot **matrix)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (matrix[i])
-	{
-		j = 0;
-		while (matrix[i][j].is_last == 0)
-		{
-			printf("x = %f, y = %f, z = %f\n", matrix[i][j].x, matrix[i][j].y, matrix[i][j].z);
-			j++;
-		}
-		printf("x = %f, y = %f, z = %f\n", matrix[i][j].x, matrix[i][j].y, matrix[i][j].z);
-		i++;
-	}
-}
-
+/**
+ * Set dots for each line of matrix
+ * @param line
+ * @param matrix
+ * @param y
+ */
 static void	matrix_set_dots(char *line, t_dot **matrix, int y)
 {
 	char	**dots;
@@ -48,9 +35,14 @@ static void	matrix_set_dots(char *line, t_dot **matrix, int y)
 		x++;
 	}
 	free(dots);
-	matrix[y][x -1].is_last = 1;
+	matrix[y][x - 1].is_last = 1;
 }
 
+/**
+ * Get number of columns in matrix
+ * @param fd
+ * @return Integer number of columns
+ */
 static int	matrix_nb_x(int fd)
 {
 	int 	nb_x;
@@ -62,6 +54,11 @@ static int	matrix_nb_x(int fd)
 	return (nb_x);
 }
 
+/**
+ * Get number of rows in matrix
+ * @param fd
+ * @return Integer number of rows
+ */
 static int	matrix_nb_y(int fd)
 {
 	int 	nb_y;
@@ -78,6 +75,11 @@ static int	matrix_nb_y(int fd)
 	return (nb_y);
 }
 
+/**
+ * Create and allocate memory for new matrix from file
+ * @param file_path
+ * @return t_dot** Matrix of t_dot
+ */
 t_dot	**matrix_create(char *file_path)
 {
 	t_dot	**new_matrix;
@@ -105,6 +107,11 @@ t_dot	**matrix_create(char *file_path)
 	return (new_matrix);
 }
 
+/**
+ * Build matrix from file
+ * @param matrix
+ * @param file_path
+ */
 void	matrix_build(t_dot **matrix, char *file_path)
 {
 	int		fd;

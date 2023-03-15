@@ -37,6 +37,7 @@ FDF_SRC			= ./srcs/fdf.c \
 				  ./srcs/key_hook.c \
 				  ./srcs/mouse_hook.c \
 				  ./srcs/fdf_close.c \
+				  ./srcs/handle_event.c \
 
 # COLORS
 _END=$'\x1b[0m'

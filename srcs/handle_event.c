@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_map.c                                         :+:      :+:    :+:   */
+/*   handle_event.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: synicole <synicole@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/08 14:14:10 by synicole          #+#    #+#             */
-/*   Updated: 2023/02/08 14:14:12 by synicole         ###   ########.fr       */
+/*   Created: 2023/03/12 13:29:05 by synicole          #+#    #+#             */
+/*   Updated: 2023/03/12 13:29:07 by synicole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
 /**
- * Read the file and build a matrix of t_dot
- * @param file_path
- * @return t_dot** matrix
+ * Handle events on the window
+ * @param params
  */
-t_dot	**read_map(char *file_path)
+void	handle_event(t_param *params)
 {
-	t_dot	**matrix;
-
-	matrix = matrix_create(file_path);
-	matrix_build(matrix, file_path);
-	return (matrix);
+	mlx_hook(params->win_ptr, 2, 0, key_hook, params);
+	mlx_mouse_hook(params->win_ptr, mouse_hook, params);
+	mlx_hook(params->win_ptr, ON_DESTROY, KEY_PRESS_MASK, fdf_close, params);
 }

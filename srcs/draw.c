@@ -12,26 +12,38 @@
 
 #include "../fdf.h"
 
-float	fmodule(float i)
-{
-	return (i < 0) ? -i : i;
-}
-
 static void	line(t_dot a, t_dot b, t_param *param)
 {
 	float	step_x;
 	float	step_y;
+	float	abs_step_x;
+	float	abs_step_y;
 	float	max;
 	int		color;
 
 	set_param(&a, &b, param);
 	step_x = b.x - a.x;
 	step_y = b.y - a.y;
-	max = MAX(fmodule(step_x), fmodule(step_y));
+	if (step_x < 0)
+		abs_step_x = -step_x;
+	else
+		abs_step_x = step_x;
+	if (step_y < 0)
+		abs_step_y = -step_y;
+	else
+		abs_step_y = step_y;
+	if (abs_step_x > abs_step_y)
+		max = abs_step_x;
+	else
+		max = abs_step_y;
 	step_x /= max;
 	step_y /= max;
-	color = (b.z || a.z) ? 0xfc0345 : 0xBBFAFF;
-	color = (b.z != a.z) ? 0xfc031c : color;
+	if (b.z || a.z)
+		color = 0xfc0345;
+	else
+		color = 0xBBFAFF;
+	if (b.z != a.z)
+		color = 0xfc031c;
 	while ((int)(a.x - b.x) || (int)(a.y - b.y))
 	{
 		mlx_pixel_put(param->mlx_ptr, param->win_ptr, a.x, a.y, color);
@@ -42,6 +54,10 @@ static void	line(t_dot a, t_dot b, t_param *param)
 	}
 }
 
+/**
+ * Draw the matrix of t_dot
+ * @param params
+ */
 void	draw(t_param *params)
 {
 	int	y;
@@ -65,3 +81,5 @@ void	draw(t_param *params)
 		y++;
 	}
 }
+
+// str[i]
