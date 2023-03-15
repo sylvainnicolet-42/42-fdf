@@ -28,7 +28,7 @@
 char	*get_next_line(int fd);
 char	*gnl_get_line(char **stash);
 void	gnl_read_line(int fd, char *buffer, char **stash);
-size_t	gnl_strlen(char *str);
+size_t	gnl_len(const char *str);
 char	*gnl_strjoin(char *s1, char *s2);
 char	*gnl_substr(char *s, unsigned int start, size_t len);
 char	*gnl_strchr(char *s, int c);
@@ -128,14 +128,12 @@ typedef struct s_param
 t_dot	**read_map(char *file_path);
 t_dot	**matrix_create(char *file_path);
 void	matrix_build(t_dot **matrix, char *file_path);
-void	matrix_clear(t_dot **matrix);
 t_param	*params_build(t_dot **matrix);
 void	reset_params(t_param *params);
 void	draw(t_param *params);
 void	print_menu(t_param *params);
 void	set_param(t_dot *a, t_dot *b, t_param *params);
 int		key_hook(int key, t_param *params);
-void	new_window(int key, t_dot **matrix, t_param *params);
 int		mouse_hook(int button, int x, int y, t_param *params);
 void	handle_event(t_param *params);
 int		fdf_close(t_param *params);

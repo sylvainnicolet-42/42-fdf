@@ -81,5 +81,3 @@ void	draw(t_param *params)
 		y++;
 	}
 }
-
-// str[i]

@@ -36,7 +36,7 @@ static void	shifting(t_dot *a, t_dot *b, t_param *params)
 //	dot->y = (dot->x + dot->y) * sin(angle) - dot->z;
 //}
 
-static void isometric(t_dot *a, t_dot *b, t_param *params)
+static void	isometric(t_dot *a, t_dot *b, t_param *params)
 {
 	a->x = (a->x - a->y) * cos(params->angle);
 	a->y = (a->x + a->y) * sin(params->angle) - a->z;

@@ -17,7 +17,7 @@
  * @param char *str
  * @return size_t len
  */
-size_t	gnl_strlen(char *str)
+size_t	gnl_len(const char *str)
 {
 	size_t	i;
 
@@ -41,7 +41,7 @@ char	*gnl_strjoin(char *s1, char *s2)
 
 	i = 0;
 	j = 0;
-	str = malloc(sizeof(char) * (gnl_strlen(s1) + gnl_strlen(s2) + 1));
+	str = malloc(sizeof(char) * (gnl_len(s1) + gnl_len(s2) + 1));
 	if (!str)
 		return (NULL);
 	while (s1[i])
@@ -73,11 +73,11 @@ char	*gnl_substr(char *s, unsigned int start, size_t len)
 	size_t	l;
 
 	i = 0;
-	if (gnl_strlen(s) > len)
+	if (gnl_len(s) > len)
 		l = len;
 	else
-		l = gnl_strlen(s);
-	if ((s[0] == '\0' && len != 0) || start > gnl_strlen(s))
+		l = gnl_len(s);
+	if ((s[0] == '\0' && len != 0) || start > gnl_len(s))
 	{
 		ptr = malloc(sizeof(char) * 1);
 		if (!ptr)

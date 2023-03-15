@@ -45,7 +45,7 @@ static void	matrix_set_dots(char *line, t_dot **matrix, int y)
  */
 static int	matrix_nb_x(int fd)
 {
-	int 	nb_x;
+	int		nb_x;
 	char	*line;
 
 	line = get_next_line(fd);
@@ -61,7 +61,7 @@ static int	matrix_nb_x(int fd)
  */
 static int	matrix_nb_y(int fd)
 {
-	int 	nb_y;
+	int		nb_y;
 	char	*line;
 
 	nb_y = 1;

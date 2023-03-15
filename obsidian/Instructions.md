@@ -6,6 +6,7 @@
 - [ ] Implement colors in matrix
 - [ ] Understand Bresenham's algorithm
 - [ ] Display maps in isometric view
+- [ ] Better center
 - [x] ESC must close properly the windows and quite the program
 - [x] The cross at the top must close properly the windows and quite the program
 - [ ] Check norm
@@ -15,4 +16,4 @@
 - [x] Implement zoom in / zoom out
 - [x] Implement translation
 - [ ] Implement rotation
-- [ ] Implement z-height
+- [x] Implement z-height

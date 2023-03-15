@@ -38,15 +38,15 @@ char	*gnl_get_line(char **stash)
 		return (NULL);
 	if (!gnl_strchr(*stash, '\n'))
 	{
-		line = gnl_substr(*stash, 0, gnl_strlen(*stash));
+		line = gnl_substr(*stash, 0, gnl_len(*stash));
 		free(*stash);
 		*stash = NULL;
 		return (line);
 	}
-	newline_index = gnl_strlen(*stash) - gnl_strlen(gnl_strchr(*stash, '\n') + 1);
+	newline_index = gnl_len(*stash) - gnl_len(gnl_strchr(*stash, '\n') + 1);
 	line = gnl_substr(*stash, 0, newline_index);
 	tmp = *stash;
-	*stash = gnl_substr(gnl_strchr(*stash, '\n'), 1, gnl_strlen(*stash));
+	*stash = gnl_substr(gnl_strchr(*stash, '\n'), 1, gnl_len(*stash));
 	free(tmp);
 	tmp = NULL;
 	if (**stash == '\0')
