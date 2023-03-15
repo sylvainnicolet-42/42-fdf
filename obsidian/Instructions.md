@@ -3,13 +3,14 @@
 - [x] If number of arguments != 2, print an error
 - [x] Display image in a window
 - [x] Display in the window must be fluid (change window, minimize)
-- [ ] Implement colors in matrix
+- [x] Implement colors in matrix
 - [x] Understand Bresenham's algorithm
 - [ ] Display maps in isometric view
 - [x] Better center
 - [x] ESC must close properly the windows and quite the program
 - [x] The cross at the top must close properly the windows and quite the program
 - [ ] Check norm
+- [ ] Check leaks
 ---
 ## Bonus
 - [x] Add an other projection

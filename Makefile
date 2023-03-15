@@ -27,6 +27,7 @@ FDF_SRC			= ./srcs/fdf.c \
 				  ./srcs/utils/print.c \
 				  ./srcs/utils/get_next_line.c \
 				  ./srcs/utils/get_next_line_utils.c \
+				  ./srcs/utils/ft_hex_to_int.c \
 				  ./srcs/utils/ft_wdcounter.c \
 				  ./srcs/params.c \
 				  ./srcs/draw.c \

@@ -12,19 +12,33 @@
 
 #include "../fdf.h"
 
+/**
+ * Set the color of the line
+ * @param a t_dot
+ * @param b t_dot
+ * @return int color
+ */
 static int	set_color(t_dot a, t_dot b)
 {
 	int	color;
 
 	if (b.z || a.z)
-		color = 0xfc0345;
+		color = RED;
 	else
-		color = 0xBBFAFF;
-	if (b.z != a.z)
-		color = 0xfc031c;
+		color = WHITE;
+	if (a.color)
+		color = a.color;
+	if (b.color)
+		color = b.color;
 	return (color);
 }
 
+/**
+ * Get the max
+ * @param step_x
+ * @param step_y
+ * @return float
+ */
 static float	get_max(float step_x, float step_y)
 {
 	float	abs_step_x;
@@ -47,9 +61,9 @@ static float	get_max(float step_x, float step_y)
 }
 
 /**
- * Draw a line between two t_dot using Bresenham's line algorithm
- * @param a
- * @param b
+ * Draw a line between two points using Bresenham's line algorithm
+ * @param a t_dot
+ * @param b t_dot
  * @param param
  */
 static void	line(t_dot a, t_dot b, t_param *param)

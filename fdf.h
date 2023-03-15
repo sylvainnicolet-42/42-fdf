@@ -22,19 +22,6 @@
 # include <math.h>
 # include <stdlib.h>
 
-/**
- * Get next line
-*/
-char	*get_next_line(int fd);
-char	*gnl_get_line(char **stash);
-void	gnl_read_line(int fd, char *buffer, char **stash);
-size_t	gnl_len(const char *str);
-char	*gnl_strjoin(char *s1, char *s2);
-char	*gnl_substr(char *s, unsigned int start, size_t len);
-char	*gnl_strchr(char *s, int c);
-
-int		ft_wdcounter(char const *str, char c);
-
 enum e_color
 {
 	BLACK = 0x000000,
@@ -108,6 +95,7 @@ typedef struct s_dot
 	float		x;
 	float		y;
 	float		z;
+	int			color;
 	int			is_last;
 }	t_dot;
 
@@ -126,6 +114,9 @@ typedef struct s_param
 	void	*win_ptr;
 }	t_param;
 
+/**
+ * FDF
+*/
 t_dot	**read_map(char *file_path);
 t_dot	**matrix_create(char *file_path);
 void	matrix_build(t_dot **matrix, char *file_path);
@@ -141,6 +132,19 @@ int		key_hook(int key, t_param *params);
 int		mouse_hook(int button, int x, int y, t_param *params);
 void	handle_event(t_param *params);
 int		fdf_close(t_param *params);
+
+/**
+ * Utils
+*/
+char	*get_next_line(int fd);
+char	*gnl_get_line(char **stash);
+void	gnl_read_line(int fd, char *buffer, char **stash);
+size_t	gnl_len(const char *str);
+char	*gnl_strjoin(char *s1, char *s2);
+char	*gnl_substr(char *s, unsigned int start, size_t len);
+char	*gnl_strchr(char *s, int c);
+int		ft_wdcounter(char const *str, char c);
+int		ft_hex_to_int(char *hex);
 
 /**
  * Print in console
