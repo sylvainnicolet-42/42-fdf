@@ -12,18 +12,25 @@
 
 #include "../fdf.h"
 
-static void	line(t_dot a, t_dot b, t_param *param)
+static int	set_color(t_dot a, t_dot b)
 {
-	float	step_x;
-	float	step_y;
+	int	color;
+
+	if (b.z || a.z)
+		color = 0xfc0345;
+	else
+		color = 0xBBFAFF;
+	if (b.z != a.z)
+		color = 0xfc031c;
+	return (color);
+}
+
+static float	get_max(float step_x, float step_y)
+{
 	float	abs_step_x;
 	float	abs_step_y;
 	float	max;
-	int		color;
 
-	set_param(&a, &b, param);
-	step_x = b.x - a.x;
-	step_y = b.y - a.y;
 	if (step_x < 0)
 		abs_step_x = -step_x;
 	else
@@ -36,14 +43,29 @@ static void	line(t_dot a, t_dot b, t_param *param)
 		max = abs_step_x;
 	else
 		max = abs_step_y;
+	return (max);
+}
+
+/**
+ * Draw a line between two t_dot using Bresenham's line algorithm
+ * @param a
+ * @param b
+ * @param param
+ */
+static void	line(t_dot a, t_dot b, t_param *param)
+{
+	float	step_x;
+	float	step_y;
+	float	max;
+	int		color;
+
+	refresh_params(&a, &b, param);
+	step_x = b.x - a.x;
+	step_y = b.y - a.y;
+	max = get_max(step_x, step_y);
 	step_x /= max;
 	step_y /= max;
-	if (b.z || a.z)
-		color = 0xfc0345;
-	else
-		color = 0xBBFAFF;
-	if (b.z != a.z)
-		color = 0xfc031c;
+	color = set_color(a, b);
 	while ((int)(a.x - b.x) || (int)(a.y - b.y))
 	{
 		mlx_pixel_put(param->mlx_ptr, param->win_ptr, a.x, a.y, color);

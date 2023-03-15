@@ -15,7 +15,6 @@
 /**
  * Clear the matrix
  * @param matrix
- * @return int
  */
 static void	matrix_clear(t_dot **matrix)
 {

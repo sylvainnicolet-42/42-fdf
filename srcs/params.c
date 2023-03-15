@@ -34,18 +34,20 @@ t_param	*params_build(t_dot **matrix)
 	params->win_x = P_WIN_X;
 	params->win_y = P_WIN_Y;
 	params->shift_x = params->win_x / 2;
-	params->shift_y = params->win_y / 3;
+	params->shift_y = P_POS_Y;
 	mlx_ptr = mlx_init();
-	if (!mlx_ptr)
+	win_ptr = mlx_new_window(mlx_ptr, params->win_x, params->win_y, "FDF");
+	if (!mlx_ptr || !win_ptr)
 		ft_print_error("mlx_init error");
 	params->mlx_ptr = mlx_ptr;
-	win_ptr = mlx_new_window(params->mlx_ptr, params->win_x, params->win_y, "FDF");
-	if (!win_ptr)
-		ft_print_error("mlx_new_window error");
 	params->win_ptr = win_ptr;
 	return (params);
 }
 
+/**
+ * Reset the parameters to default
+ * @param params
+ */
 void	reset_params(t_param *params)
 {
 	params->scale = P_SCALE;
@@ -56,4 +58,18 @@ void	reset_params(t_param *params)
 	params->win_y = P_WIN_Y;
 	params->shift_x = params->win_x / 2;
 	params->shift_y = params->win_y / 3;
+}
+
+/**
+ * Refresh the parameters
+ * @param a
+ * @param b
+ * @param params
+ */
+void	refresh_params(t_dot *a, t_dot *b, t_param *params)
+{
+	zoom(a, b, params);
+	if (params->projection == VIEW_ISO)
+		isometric(a, b, params);
+	shifting(a, b, params);
 }

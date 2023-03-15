@@ -4,9 +4,9 @@
 - [x] Display image in a window
 - [x] Display in the window must be fluid (change window, minimize)
 - [ ] Implement colors in matrix
-- [ ] Understand Bresenham's algorithm
+- [x] Understand Bresenham's algorithm
 - [ ] Display maps in isometric view
-- [ ] Better center
+- [x] Better center
 - [x] ESC must close properly the windows and quite the program
 - [x] The cross at the top must close properly the windows and quite the program
 - [ ] Check norm
@@ -15,5 +15,5 @@
 - [x] Add an other projection
 - [x] Implement zoom in / zoom out
 - [x] Implement translation
-- [ ] Implement rotation
+- [x] Implement rotation
 - [x] Implement z-height

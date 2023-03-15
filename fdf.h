@@ -98,6 +98,7 @@ enum e_param
 	P_Z_SCALE = 1,
 	P_PROJECTION = VIEW_ISO,
 	P_ANGLE = 1,
+	P_POS_Y = 200,
 	P_WIN_X = 800,
 	P_WIN_Y = 800,
 };
@@ -132,7 +133,10 @@ t_param	*params_build(t_dot **matrix);
 void	reset_params(t_param *params);
 void	draw(t_param *params);
 void	print_menu(t_param *params);
-void	set_param(t_dot *a, t_dot *b, t_param *params);
+void	refresh_params(t_dot *a, t_dot *b, t_param *params);
+void	isometric(t_dot *a, t_dot *b, t_param *params);\
+void	shifting(t_dot *a, t_dot *b, t_param *params);
+void	zoom(t_dot *a, t_dot *b, t_param *params);
 int		key_hook(int key, t_param *params);
 int		mouse_hook(int button, int x, int y, t_param *params);
 void	handle_event(t_param *params);

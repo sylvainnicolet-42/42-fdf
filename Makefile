@@ -24,16 +24,14 @@ FDF_OBJ			= $(FDF_SRC:.c=.o)
 FDF_SRC			= ./srcs/fdf.c \
 				  ./srcs/read_map.c \
 				  ./srcs/matrix.c \
-				  ./srcs/matrix_clear.c \
 				  ./srcs/utils/print.c \
 				  ./srcs/utils/get_next_line.c \
 				  ./srcs/utils/get_next_line_utils.c \
 				  ./srcs/utils/ft_wdcounter.c \
 				  ./srcs/params.c \
 				  ./srcs/draw.c \
-				  ./srcs/print_menu.c \
-				  ./srcs/set_param.c \
-				  ./srcs/izometric.c \
+				  ./srcs/menu.c \
+				  ./srcs/behaviour.c \
 				  ./srcs/key_hook.c \
 				  ./srcs/mouse_hook.c \
 				  ./srcs/fdf_close.c \
