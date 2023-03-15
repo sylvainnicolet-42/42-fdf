@@ -18,7 +18,7 @@
  */
 void	handle_event(t_param *params)
 {
-	mlx_hook(params->win_ptr, 2, 0, key_hook, params);
+	mlx_hook(params->win_ptr, KEY_PRESS, KEY_PRESS_MASK, key_hook, params);
 	mlx_mouse_hook(params->win_ptr, mouse_hook, params);
 	mlx_hook(params->win_ptr, ON_DESTROY, KEY_PRESS_MASK, fdf_close, params);
 }

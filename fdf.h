@@ -13,9 +13,6 @@
 #ifndef FDF_H
 # define FDF_H
 
-# define MAX(A, B) (A > B ? A : B)
-# define MIN(A, B) (A > B ? B : A)
-
 /**
  * Libraries
 */
@@ -53,18 +50,23 @@ enum e_color
 
 enum e_key
 {
+	KEY_A = 0,
+	KEY_S = 1,
+	KEY_D = 2,
+	KEY_Z = 6,
+	KEY_X = 7,
+	KEY_W = 13,
+	KEY_E = 14,
+	KEY_R = 15,
+	KEY_P = 35,
+	KEY_SPACE = 49,
 	KEY_ESC = 53,
+	KEY_PLUS = 69,
+	KEY_MINUS = 78,
 	KEY_ARROW_LEFT = 123,
 	KEY_ARROW_RIGHT = 124,
 	KEY_ARROW_DOWN = 125,
 	KEY_ARROW_UP = 126,
-	KEY_A = 0,
-	KEY_S = 1,
-	KEY_D = 2,
-	KEY_W = 13,
-	KEY_P = 35,
-	KEY_E = 14,
-	KEY_R = 15,
 };
 
 enum e_mouse
@@ -75,6 +77,7 @@ enum e_mouse
 
 enum e_xcode_event
 {
+	KEY_PRESS = 2,
 	ON_DESTROY = 17
 };
 
@@ -87,6 +90,16 @@ enum e_projection
 {
 	VIEW_ISO = 0,
 	VIEW_TOP = 1,
+};
+
+enum e_param
+{
+	P_SCALE = 20,
+	P_Z_SCALE = 1,
+	P_PROJECTION = VIEW_ISO,
+	P_ANGLE = 1,
+	P_WIN_X = 800,
+	P_WIN_Y = 800,
 };
 
 typedef struct s_dot
@@ -116,12 +129,14 @@ t_dot	**read_map(char *file_path);
 t_dot	**matrix_create(char *file_path);
 void	matrix_build(t_dot **matrix, char *file_path);
 void	matrix_clear(t_dot **matrix);
+t_param	*params_build(t_dot **matrix);
+void	reset_params(t_param *params);
 void	draw(t_param *params);
 void	print_menu(t_param *params);
 void	set_param(t_dot *a, t_dot *b, t_param *params);
 int		key_hook(int key, t_param *params);
 void	new_window(int key, t_dot **matrix, t_param *params);
-int 	mouse_hook(int button, int x, int y, t_param *params);
+int		mouse_hook(int button, int x, int y, t_param *params);
 void	handle_event(t_param *params);
 int		fdf_close(t_param *params);
 
