@@ -1,0 +1,15 @@
+- [ ] Don't use globale variables
+- [x] Take the path of the map in argument
+- [x] If number of arguments != 2, print an error
+- [x] Display image in a window
+- [x] Display in the window must be fluid (change window, minimize)
+- [ ] Display maps in isometric view
+- [x] ESC must close properly the windows and quite the program
+- [x] The cross at the top must close properly the windows and quite the program
+---
+## Bonus
+- [ ] Add an other projection
+- [x] Implement zoom in / zoom out
+- [x] Implement translation
+- [ ] Implement rotation
+- [ ] Other ideas
