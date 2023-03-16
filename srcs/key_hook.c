@@ -48,10 +48,10 @@ static void	update_params(int key, t_param *params)
 		params->scale += 3;
 	if (key == KEY_MINUS)
 		params->scale += -3;
-	if (key == KEY_E)
-		params->angle += 0.05;
-	if (key == KEY_R)
-		params->angle -= 0.05;
+//	if (key == KEY_E)
+//		params->angle += 0.05;
+//	if (key == KEY_R)
+//		params->angle -= 0.05;
 }
 
 /**

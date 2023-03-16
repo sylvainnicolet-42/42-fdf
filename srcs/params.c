@@ -27,14 +27,7 @@ t_param	*params_build(t_dot **matrix)
 	if (!params)
 		ft_print_error("Malloc error");
 	params->matrix = matrix;
-	params->scale = P_SCALE;
-	params->z_scale = P_Z_SCALE;
-	params->projection = P_PROJECTION;
-	params->angle = P_ANGLE;
-	params->win_x = P_WIN_X;
-	params->win_y = P_WIN_Y;
-	params->shift_x = params->win_x / 2;
-	params->shift_y = P_POS_Y;
+	reset_params(params);
 	mlx_ptr = mlx_init();
 	win_ptr = mlx_new_window(mlx_ptr, params->win_x, params->win_y, "FDF");
 	if (!mlx_ptr || !win_ptr)
@@ -53,11 +46,10 @@ void	reset_params(t_param *params)
 	params->scale = P_SCALE;
 	params->z_scale = P_Z_SCALE;
 	params->projection = P_PROJECTION;
-	params->angle = P_ANGLE;
 	params->win_x = P_WIN_X;
 	params->win_y = P_WIN_Y;
 	params->shift_x = params->win_x / 2;
-	params->shift_y = params->win_y / 3;
+	params->shift_y = P_POS_Y;
 }
 
 /**

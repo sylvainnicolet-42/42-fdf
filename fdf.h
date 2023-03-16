@@ -84,7 +84,6 @@ enum e_param
 	P_SCALE = 20,
 	P_Z_SCALE = 1,
 	P_PROJECTION = VIEW_ISO,
-	P_ANGLE = 1,
 	P_POS_Y = 200,
 	P_WIN_X = 800,
 	P_WIN_Y = 800,
@@ -107,7 +106,6 @@ typedef struct s_param
 	int		shift_x;
 	int		shift_y;
 	int		projection;
-	double	angle;
 	int		win_x;
 	int		win_y;
 	void	*mlx_ptr;
@@ -125,7 +123,7 @@ void	reset_params(t_param *params);
 void	draw(t_param *params);
 void	print_menu(t_param *params);
 void	refresh_params(t_dot *a, t_dot *b, t_param *params);
-void	isometric(t_dot *a, t_dot *b, t_param *params);\
+void	isometric(t_dot *a, t_dot *b, t_param *params);
 void	shifting(t_dot *a, t_dot *b, t_param *params);
 void	zoom(t_dot *a, t_dot *b, t_param *params);
 int		key_hook(int key, t_param *params);

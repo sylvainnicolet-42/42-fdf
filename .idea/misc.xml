@@ -4,6 +4,9 @@
     <sourceRoots>
       <file path="$PROJECT_DIR$/srcs" />
     </sourceRoots>
+    <excludeRoots>
+      <file path="$PROJECT_DIR$/obsidian" />
+    </excludeRoots>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="MakefileSettings">

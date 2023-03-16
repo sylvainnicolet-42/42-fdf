@@ -50,8 +50,11 @@ void	shifting(t_dot *a, t_dot *b, t_param *params)
  */
 void	isometric(t_dot *a, t_dot *b, t_param *params)
 {
-	a->x = (a->x - a->y) * cos(params->angle);
-	a->y = (a->x + a->y) * sin(params->angle) - a->z;
-	b->x = (b->x - b->y) * cos(params->angle);
-	b->y = (b->x + b->y) * sin(params->angle) - b->z;
+	(void) params;
+	int angle = 30;
+
+	a->x = (a->x - a->y) * cos(angle * M_PI / 180);
+	a->y = (a->x + a->y) * sin(angle * M_PI / 180) - a->z;
+	b->x = (b->x - b->y) * cos(angle * M_PI / 180);
+	b->y = (b->x + b->y) * sin(angle * M_PI / 180) - b->z;
 }
