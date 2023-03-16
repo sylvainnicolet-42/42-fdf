@@ -1,6 +1,7 @@
 ```C
 enum e_xcode_event  
 {  
+   KEY_PRESS = 2,  
    ON_DESTROY = 17  
 };  
   

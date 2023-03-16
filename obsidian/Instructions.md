@@ -9,8 +9,8 @@
 - [x] Better center
 - [x] ESC must close properly the windows and quite the program
 - [x] The cross at the top must close properly the windows and quite the program
-- [ ] Check norm
-- [ ] Check leaks
+- [x] Check norm
+- [x] Check leaks
 ---
 ## Bonus
 - [x] Add an other projection

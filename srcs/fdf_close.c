@@ -30,7 +30,7 @@ static void	matrix_clear(t_dot **matrix)
 }
 
 /**
- * Close properly FDD
+ * Close properly FDF
  * @param params
  * @return int
  */

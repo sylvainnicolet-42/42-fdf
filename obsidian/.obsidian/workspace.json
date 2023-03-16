@@ -30,9 +30,9 @@
               "state": {
                 "file": "FDF.canvas",
                 "viewState": {
-                  "x": 1450.573090891821,
-                  "y": 2319.7651482375613,
-                  "zoom": -1.0234396093836429
+                  "x": 3277.9546320499535,
+                  "y": 1610.0523908996843,
+                  "zoom": -1.3574321224044759
                 }
               }
             }
@@ -166,5 +166,13 @@
     }
   },
   "active": "11f1fd331a98e690",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "code/behaviour.md",
+    "code/refresh_params.md",
+    "code/reset_params.md",
+    "code/fdf_close.md",
+    "code/line.md",
+    "code/set_dot_color.md",
+    "code/s_param.md"
+  ]
 }

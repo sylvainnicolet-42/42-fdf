@@ -140,6 +140,15 @@
   },
   "active": "d0daeb2098e712ce",
   "lastOpenFiles": [
+    "obsidian/code/behaviour.md",
+    "obsidian/code/refresh_params.md",
+    "obsidian/code/reset_params.md",
+    "srcs/fdf_close.c~",
+    "obsidian/code/fdf_close.md",
+    "obsidian/code/line.md",
+    "obsidian/code/set_dot_color.md",
+    "obsidian/code/s_param.md",
+    "obsidian/code/s_dot.md",
     "test_maps/42.fdf~",
     "fdf.ld_sG1Fgc",
     "srcs/draw-f2612fb4.o.tmp",
@@ -148,8 +157,6 @@
     "test_maps/t1.fdf",
     "test_maps/pyramide.fdf",
     "test_maps/pyra.fdf",
-    "test_maps/pylone.fdf",
-    "test_maps/pnp_flat.fdf",
-    "test_maps/plat.fdf"
+    "test_maps/pylone.fdf"
   ]
 }

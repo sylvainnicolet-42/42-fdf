@@ -1,11 +1,75 @@
 Handle key press
 ```C
+static int  is_key(int key)  
+{  
+   return (key == KEY_ESC || key == KEY_ARROW_LEFT || key == KEY_ARROW_RIGHT  
+      || key == KEY_ARROW_DOWN || key == KEY_ARROW_UP || key == KEY_A  
+      || key == KEY_S || key == KEY_D || key == KEY_W || key == KEY_P  
+      || key == KEY_E || key == KEY_R || key == KEY_Z || key == KEY_X  
+      || key == KEY_PLUS || key == KEY_MINUS || key == KEY_SPACE  
+      || key == KEY_Y || key == KEY_N || key == KEY_M || key == KEY_C  
+   );  
+}
+```
+
+```C
+static void update_params(int key, t_param *params)  
+{  
+   if (key == KEY_ESC)  
+      fdf_close(params);  
+   if (key == KEY_ARROW_LEFT || key == KEY_A)  
+      params->shift_x += 10;  
+   if (key == KEY_ARROW_RIGHT || key == KEY_D)  
+      params->shift_x -= 10;  
+   if (key == KEY_ARROW_DOWN || key == KEY_S)  
+      params->shift_y -= 10;  
+   if (key == KEY_ARROW_UP || key == KEY_W)  
+      params->shift_y += 10;  
+   if (key == KEY_PLUS)  
+      params->scale += 3;  
+   if (key == KEY_MINUS)  
+      params->scale += -3;  
+   if (key == KEY_X)  
+      params->alpha += 0.2;  
+   if (key == KEY_Y)  
+      params->beta += 0.2;  
+   if (key == KEY_Z)  
+      params->teta += 0.2;  
+}
+```
+
+```C
+static void update_params_ext(int key, t_param *params)  
+{  
+   if (key == KEY_P)  
+   {  
+      if (params->projection == VIEW_TOP)  
+         params->projection = 0;  
+      else         params->projection++;  
+   }  
+   if (key == KEY_N)  
+      params->z_scale += 1;  
+   if (key == KEY_M)  
+      params->z_scale -= 1;  
+   if (key == KEY_C)  
+   {  
+      if (params->color == P_ORANGE)  
+         params->color = 0;  
+      else         params->color++;  
+   }  
+   if (key == KEY_SPACE)  
+      reset_params(params);  
+}
+```
+
+```C
 int key_hook(int key, t_param *params)  
 {  
    if (is_key(key))  
    {  
       mlx_clear_window(params->mlx_ptr, params->win_ptr);  
       update_params(key, params);  
+      update_params_ext(key, params);  
       print_menu(params);  
       draw(params);  
    }  
