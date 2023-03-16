@@ -94,7 +94,6 @@ static void	update_params_ext(int key, t_param *params)
  */
 int	key_hook(int key, t_param *params)
 {
-	printf("key: %d\n", key);
 	if (is_key(key))
 	{
 		mlx_clear_window(params->mlx_ptr, params->win_ptr);

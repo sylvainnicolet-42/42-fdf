@@ -12,6 +12,10 @@
 
 #include "../fdf.h"
 
+/**
+ * Get color of points with z value
+ * @param params
+ */
 static int	get_color(t_param *params)
 {
 	if (params->color == P_BLACK)

@@ -26,6 +26,12 @@ void	isometric(t_dot *a, t_dot *b, t_param *params)
 	b->y = (b->x + b->y) * sin(params->angle) - b->z;
 }
 
+/**
+ * X rotation
+ * @param a
+ * @param b
+ * @param alpha
+ */
 void	x_rotation(t_dot *a, t_dot *b, double alpha)
 {
 	a->y = a->y * cos(alpha) + a->z * sin(alpha);
@@ -34,6 +40,12 @@ void	x_rotation(t_dot *a, t_dot *b, double alpha)
 	b->z = -(b->y) * sin(alpha) + b->z * (cos(alpha));
 }
 
+/**
+ * Y rotation
+ * @param a
+ * @param b
+ * @param beta
+ */
 void	y_rotation(t_dot *a, t_dot *b, double beta)
 {
 	a->x = a->x * cos(beta) + a->z * sin(beta);
@@ -42,6 +54,12 @@ void	y_rotation(t_dot *a, t_dot *b, double beta)
 	b->z = -(b->x) * sin(beta) + b->z * (cos(beta));
 }
 
+/**
+ * Z rotation
+ * @param a
+ * @param b
+ * @param teta
+ */
 void	z_rotation(t_dot *a, t_dot *b, double teta)
 {
 	a->x = a->x * cos(teta) - a->y * sin(teta);
