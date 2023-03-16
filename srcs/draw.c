@@ -16,7 +16,7 @@
  * Get color of points with z value
  * @param params
  */
-static int	get_color(t_param *params)
+static int	get_color_from_params(t_param *params)
 {
 	if (params->color == P_BLACK)
 		return (BLACK);
@@ -46,18 +46,16 @@ static int	get_color(t_param *params)
  * @param b t_dot
  * @return int color
  */
-static int	set_color(t_dot a, t_dot b, t_param *params)
+static int	get_color(t_dot a, t_dot b, t_param *params)
 {
-	int	color;
-
-	color = P_COLOR_GRID;
-	if (a.has_height || b.has_height)
-		color = get_color(params);
+	(void) params;
 	if (a.color)
-		color = a.color;
-	if (b.color)
-		color = b.color;
-	return (color);
+		return (a.color);
+	else if (b.color)
+		return (b.color);
+	if (a.has_height == 1 || b.has_height == 1)
+		return (get_color_from_params(params));
+	return (P_COLOR_GRID);
 }
 
 /**
@@ -106,7 +104,7 @@ static void	line(t_dot a, t_dot b, t_param *params)
 	max = get_max(step_x, step_y);
 	step_x /= max;
 	step_y /= max;
-	color = set_color(a, b, params);
+	color = get_color(a, b, params);
 	while ((int)(a.x - b.x) || (int)(a.y - b.y))
 	{
 		mlx_pixel_put(params->mlx_ptr, params->win_ptr, a.x, a.y, color);

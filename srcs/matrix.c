@@ -66,7 +66,6 @@ t_dot	**matrix_create(char *file_path)
 		ft_print_error("File does not exist");
 	x = matrix_nb_x(fd);
 	y = matrix_nb_y(fd);
-	printf("x = %d, y = %d\n", x, y);
 	new_matrix = malloc(sizeof(t_dot *) * (y + 1));
 	if (!new_matrix)
 		ft_print_error("Malloc error");

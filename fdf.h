@@ -114,7 +114,7 @@ typedef struct s_dot
 	float	x;
 	float	y;
 	float	z;
-	int 	has_height;
+	int		has_height;
 	int		color;
 	int		is_last;
 }	t_dot;
@@ -126,7 +126,7 @@ typedef struct s_param
 	int		z_scale;
 	int		shift_x;
 	int		shift_y;
-	int 	color;
+	int		color;
 	int		projection;
 	int		win_x;
 	int		win_y;

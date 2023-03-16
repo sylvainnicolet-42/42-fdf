@@ -1,58 +1,35 @@
 {
   "main": {
-    "id": "c1242b0759051831",
+    "id": "f88c1629651335e2",
     "type": "split",
     "children": [
       {
-        "id": "206777e45bae428f",
+        "id": "725e1ff53cba443e",
         "type": "tabs",
         "children": [
           {
-            "id": "c0f43a0a9ea61b6a",
+            "id": "d0daeb2098e712ce",
             "type": "leaf",
             "state": {
-              "type": "canvas",
-              "state": {
-                "file": "FDF.canvas",
-                "viewState": {
-                  "x": -874.1065497169197,
-                  "y": 149.75538717918516,
-                  "zoom": -0.1873917643229166
-                }
-              }
-            }
-          },
-          {
-            "id": "11f1fd331a98e690",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "FDF.canvas",
-                "viewState": {
-                  "x": 1450.573090891821,
-                  "y": 2319.7651482375613,
-                  "zoom": -1.0234396093836429
-                }
-              }
+              "type": "empty",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "06e155723bcae6fa",
+    "id": "2071f74e8ec06485",
     "type": "split",
     "children": [
       {
-        "id": "6804a28e6eeafc03",
+        "id": "c65960952ad8bf2e",
         "type": "tabs",
         "children": [
           {
-            "id": "ca6ebd50d89ec24d",
+            "id": "06c881a1b7d8c736",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -62,7 +39,7 @@
             }
           },
           {
-            "id": "0bee551ab77d0fb5",
+            "id": "68614e693a0a6dba",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -77,7 +54,7 @@
             }
           },
           {
-            "id": "709c1c9eef03b510",
+            "id": "9c31e3188efcae2a",
             "type": "leaf",
             "state": {
               "type": "starred",
@@ -91,20 +68,19 @@
     "width": 300
   },
   "right": {
-    "id": "f057f8e7441b377d",
+    "id": "9f4d8e3c3457b82a",
     "type": "split",
     "children": [
       {
-        "id": "62d4cb67321b4ccd",
+        "id": "e6d92c68b07e2ce9",
         "type": "tabs",
         "children": [
           {
-            "id": "9e2e88af1f4eb08e",
+            "id": "17b308303fbd3055",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "FDF.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,19 +92,18 @@
             }
           },
           {
-            "id": "819a40d7b4a6e02f",
+            "id": "6304c1af5214e515",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "FDF.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "6e0dabbbf6d95689",
+            "id": "aa358775c7a217da",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -139,13 +114,11 @@
             }
           },
           {
-            "id": "3e36c66e4cf0b95d",
+            "id": "3b4d035018b4b82f",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "FDF.canvas"
-              }
+              "state": {}
             }
           }
         ]
@@ -165,6 +138,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "11f1fd331a98e690",
-  "lastOpenFiles": []
+  "active": "d0daeb2098e712ce",
+  "lastOpenFiles": [
+    "test_maps/42.fdf~",
+    "fdf.ld_sG1Fgc",
+    "srcs/draw-f2612fb4.o.tmp",
+    "srcs/matrix_dots-e437c4e5.o.tmp",
+    "test_maps/t2.fdf",
+    "test_maps/t1.fdf",
+    "test_maps/pyramide.fdf",
+    "test_maps/pyra.fdf",
+    "test_maps/pylone.fdf",
+    "test_maps/pnp_flat.fdf",
+    "test_maps/plat.fdf"
+  ]
 }
