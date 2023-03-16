@@ -50,6 +50,11 @@ void	reset_params(t_param *params)
 	params->win_y = P_WIN_Y;
 	params->shift_x = params->win_x / 2;
 	params->shift_y = P_POS_Y;
+	params->color = P_COLOR;
+	params->angle = P_ANGLE * M_PI / 180;
+	params->alpha = P_ANGLE * M_PI / 180;
+	params->beta = 0;
+	params->teta = 0;
 }
 
 /**
@@ -62,6 +67,11 @@ void	refresh_params(t_dot *a, t_dot *b, t_param *params)
 {
 	zoom(a, b, params);
 	if (params->projection == VIEW_ISO)
+	{
+		x_rotation(a, b, params->alpha);
+		y_rotation(a, b, params->beta);
+		z_rotation(a, b, params->teta);
 		isometric(a, b, params);
+	}
 	shifting(a, b, params);
 }

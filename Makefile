@@ -24,6 +24,7 @@ FDF_OBJ			= $(FDF_SRC:.c=.o)
 FDF_SRC			= ./srcs/fdf.c \
 				  ./srcs/read_map.c \
 				  ./srcs/matrix.c \
+				  ./srcs/matrix_dots.c \
 				  ./srcs/utils/print.c \
 				  ./srcs/utils/get_next_line.c \
 				  ./srcs/utils/get_next_line_utils.c \
@@ -33,6 +34,7 @@ FDF_SRC			= ./srcs/fdf.c \
 				  ./srcs/draw.c \
 				  ./srcs/menu.c \
 				  ./srcs/behaviour.c \
+				  ./srcs/behaviour_ext.c \
 				  ./srcs/key_hook.c \
 				  ./srcs/mouse_hook.c \
 				  ./srcs/fdf_close.c \

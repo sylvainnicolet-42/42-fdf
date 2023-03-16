@@ -12,20 +12,43 @@
 
 #include "../fdf.h"
 
+static int	get_color(t_param *params)
+{
+	if (params->color == P_BLACK)
+		return (BLACK);
+	else if (params->color == P_WHITE)
+		return (WHITE);
+	else if (params->color == P_RED)
+		return (RED);
+	else if (params->color == P_GREEN)
+		return (GREEN);
+	else if (params->color == P_BLUE)
+		return (BLUE);
+	else if (params->color == P_YELLOW)
+		return (YELLOW);
+	else if (params->color == P_PINK)
+		return (PINK);
+	else if (params->color == P_CYAN)
+		return (CYAN);
+	else if (params->color == P_ORANGE)
+		return (ORANGE);
+	else
+		return (P_COLOR);
+}
+
 /**
  * Set the color of the line
  * @param a t_dot
  * @param b t_dot
  * @return int color
  */
-static int	set_color(t_dot a, t_dot b)
+static int	set_color(t_dot a, t_dot b, t_param *params)
 {
 	int	color;
 
-	if (b.z || a.z)
-		color = RED;
-	else
-		color = WHITE;
+	color = P_COLOR_GRID;
+	if (a.has_height || b.has_height)
+		color = get_color(params);
 	if (a.color)
 		color = a.color;
 	if (b.color)
@@ -66,26 +89,26 @@ static float	get_max(float step_x, float step_y)
  * @param b t_dot
  * @param param
  */
-static void	line(t_dot a, t_dot b, t_param *param)
+static void	line(t_dot a, t_dot b, t_param *params)
 {
 	float	step_x;
 	float	step_y;
 	float	max;
 	int		color;
 
-	refresh_params(&a, &b, param);
+	refresh_params(&a, &b, params);
 	step_x = b.x - a.x;
 	step_y = b.y - a.y;
 	max = get_max(step_x, step_y);
 	step_x /= max;
 	step_y /= max;
-	color = set_color(a, b);
+	color = set_color(a, b, params);
 	while ((int)(a.x - b.x) || (int)(a.y - b.y))
 	{
-		mlx_pixel_put(param->mlx_ptr, param->win_ptr, a.x, a.y, color);
+		mlx_pixel_put(params->mlx_ptr, params->win_ptr, a.x, a.y, color);
 		a.x += step_x;
 		a.y += step_y;
-		if (a.x > param->win_x || a.y > param->win_y || a.y < 0 || a.x < 0)
+		if (a.x > params->win_x || a.y > params->win_y || a.y < 0 || a.x < 0)
 			break ;
 	}
 }

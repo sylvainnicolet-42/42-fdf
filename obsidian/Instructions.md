@@ -5,7 +5,7 @@
 - [x] Display in the window must be fluid (change window, minimize)
 - [x] Implement colors in matrix
 - [x] Understand Bresenham's algorithm
-- [ ] Display maps in isometric view
+- [x] Display maps in isometric view
 - [x] Better center
 - [x] ESC must close properly the windows and quite the program
 - [x] The cross at the top must close properly the windows and quite the program

@@ -24,6 +24,7 @@ static int	is_key(int key)
 		|| key == KEY_S || key == KEY_D || key == KEY_W || key == KEY_P
 		|| key == KEY_E || key == KEY_R || key == KEY_Z || key == KEY_X
 		|| key == KEY_PLUS || key == KEY_MINUS || key == KEY_SPACE
+		|| key == KEY_Y || key == KEY_N || key == KEY_M || key == KEY_C
 	);
 }
 
@@ -48,10 +49,12 @@ static void	update_params(int key, t_param *params)
 		params->scale += 3;
 	if (key == KEY_MINUS)
 		params->scale += -3;
-//	if (key == KEY_E)
-//		params->angle += 0.05;
-//	if (key == KEY_R)
-//		params->angle -= 0.05;
+	if (key == KEY_X)
+		params->alpha += 0.2;
+	if (key == KEY_Y)
+		params->beta += 0.2;
+	if (key == KEY_Z)
+		params->teta += 0.2;
 }
 
 /**
@@ -68,10 +71,17 @@ static void	update_params_ext(int key, t_param *params)
 		else
 			params->projection++;
 	}
-	if (key == KEY_Z)
+	if (key == KEY_N)
 		params->z_scale += 1;
-	if (key == KEY_X)
+	if (key == KEY_M)
 		params->z_scale -= 1;
+	if (key == KEY_C)
+	{
+		if (params->color == P_ORANGE)
+			params->color = 0;
+		else
+			params->color++;
+	}
 	if (key == KEY_SPACE)
 		reset_params(params);
 }

@@ -41,20 +41,3 @@ void	shifting(t_dot *a, t_dot *b, t_param *params)
 	b->x += params->shift_x;
 	b->y += params->shift_y;
 }
-
-/**
- * Use isometric view
- * @param a
- * @param b
- * @param params
- */
-void	isometric(t_dot *a, t_dot *b, t_param *params)
-{
-	(void) params;
-	int angle = 30;
-
-	a->x = (a->x - a->y) * cos(angle * M_PI / 180);
-	a->y = (a->x + a->y) * sin(angle * M_PI / 180) - a->z;
-	b->x = (b->x - b->y) * cos(angle * M_PI / 180);
-	b->y = (b->x + b->y) * sin(angle * M_PI / 180) - b->z;
-}

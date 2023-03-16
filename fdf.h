@@ -42,10 +42,14 @@ enum e_key
 	KEY_D = 2,
 	KEY_Z = 6,
 	KEY_X = 7,
+	KEY_C = 8,
 	KEY_W = 13,
 	KEY_E = 14,
 	KEY_R = 15,
+	KEY_Y = 16,
 	KEY_P = 35,
+	KEY_N = 45,
+	KEY_M = 46,
 	KEY_SPACE = 49,
 	KEY_ESC = 53,
 	KEY_PLUS = 69,
@@ -79,6 +83,19 @@ enum e_projection
 	VIEW_TOP = 1,
 };
 
+enum e_param_color
+{
+	P_BLACK = 0,
+	P_WHITE = 1,
+	P_RED = 2,
+	P_GREEN = 3,
+	P_BLUE = 4,
+	P_YELLOW = 5,
+	P_PINK = 6,
+	P_CYAN = 7,
+	P_ORANGE = 8,
+};
+
 enum e_param
 {
 	P_SCALE = 20,
@@ -87,15 +104,19 @@ enum e_param
 	P_POS_Y = 200,
 	P_WIN_X = 800,
 	P_WIN_Y = 800,
+	P_COLOR = P_RED,
+	P_COLOR_GRID = WHITE,
+	P_ANGLE = 30,
 };
 
 typedef struct s_dot
 {
-	float		x;
-	float		y;
-	float		z;
-	int			color;
-	int			is_last;
+	float	x;
+	float	y;
+	float	z;
+	int 	has_height;
+	int		color;
+	int		is_last;
 }	t_dot;
 
 typedef struct s_param
@@ -105,11 +126,16 @@ typedef struct s_param
 	int		z_scale;
 	int		shift_x;
 	int		shift_y;
+	int 	color;
 	int		projection;
 	int		win_x;
 	int		win_y;
 	void	*mlx_ptr;
 	void	*win_ptr;
+	double	angle;
+	double	alpha;
+	double	beta;
+	double	teta;
 }	t_param;
 
 /**
@@ -118,11 +144,15 @@ typedef struct s_param
 t_dot	**read_map(char *file_path);
 t_dot	**matrix_create(char *file_path);
 void	matrix_build(t_dot **matrix, char *file_path);
+void	matrix_set_dots(char *line, t_dot **matrix, int y);
 t_param	*params_build(t_dot **matrix);
 void	reset_params(t_param *params);
 void	draw(t_param *params);
 void	print_menu(t_param *params);
 void	refresh_params(t_dot *a, t_dot *b, t_param *params);
+void	x_rotation(t_dot *a, t_dot *b, double alpha);
+void	y_rotation(t_dot *a, t_dot *b, double beta);
+void	z_rotation(t_dot *a, t_dot *b, double teta);
 void	isometric(t_dot *a, t_dot *b, t_param *params);
 void	shifting(t_dot *a, t_dot *b, t_param *params);
 void	zoom(t_dot *a, t_dot *b, t_param *params);

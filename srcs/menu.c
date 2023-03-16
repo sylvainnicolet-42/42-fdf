@@ -34,8 +34,10 @@ void	print_menu(t_param *params)
 	mlx_string_put(params->mlx_ptr, params->win_ptr, 10, 5, WHITE, "Usage");
 	print_usage(params, 35, "Move", "left up down right(a w s d)");
 	print_usage(params, 55, "Zoom in/out", "scroll down/scroll up(+ -)");
-	print_usage(params, 75, "Projection", "p");
-	print_usage(params, 95, "Z-height", "z x");
-	print_usage(params, 115, "Reset", "space");
-	print_usage(params, 135, "Quit", "ESC");
+	print_usage(params, 75, "Rotation", "x y z");
+	print_usage(params, 95, "Projection", "p");
+	print_usage(params, 115, "Z-height", "n m");
+	print_usage(params, 135, "Color", "c");
+	print_usage(params, 155, "Reset", "space");
+	print_usage(params, 175, "Quit", "ESC");
 }
