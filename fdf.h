@@ -119,6 +119,14 @@ typedef struct s_dot
 	int		is_last;
 }	t_dot;
 
+typedef struct s_img {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_img;
+
 typedef struct s_param
 {
 	t_dot	**matrix;
@@ -130,12 +138,13 @@ typedef struct s_param
 	int		projection;
 	int		win_x;
 	int		win_y;
-	void	*mlx_ptr;
-	void	*win_ptr;
 	double	angle;
 	double	alpha;
 	double	beta;
 	double	teta;
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_img	*img;
 }	t_param;
 
 /**
@@ -179,5 +188,7 @@ int		ft_hex_to_int(char *hex);
 */
 void	ft_print_success(char *str);
 void	ft_print_error(char *str);
+
+void 	tmp_draw(t_param *params);
 
 #endif

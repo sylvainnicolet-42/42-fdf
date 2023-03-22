@@ -2,10 +2,12 @@ Get number of columns (x)
 ```C
 static int  matrix_nb_x(int fd)  
 {  
-   int    nb_x;  
+   int       nb_x;  
    char   *line;  
   
    line = get_next_line(fd);  
+   if (!line)  
+      ft_print_error("Not a valid file");  
    nb_x = ft_wdcounter(line, ' ');  
    free(line);  
    return (nb_x);  

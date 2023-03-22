@@ -5,6 +5,7 @@
       <file path="$PROJECT_DIR$/srcs" />
     </sourceRoots>
     <excludeRoots>
+      <file path="$PROJECT_DIR$/mlx" />
       <file path="$PROJECT_DIR$/obsidian" />
     </excludeRoots>
   </component>

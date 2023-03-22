@@ -30,9 +30,9 @@
               "state": {
                 "file": "FDF.canvas",
                 "viewState": {
-                  "x": 2134.345522178453,
-                  "y": 655.6278953711682,
-                  "zoom": -1.5755880468836427
+                  "x": 1973.7933018407323,
+                  "y": 196.19072716100186,
+                  "zoom": 0.08036295572916771
                 }
               }
             }
@@ -167,6 +167,7 @@
   },
   "active": "11f1fd331a98e690",
   "lastOpenFiles": [
+    "maps.md",
     "code/behaviour.md",
     "code/refresh_params.md",
     "code/reset_params.md",

@@ -22,6 +22,7 @@ t_param	*params_build(t_dot **matrix)
 	t_param	*params;
 	void	*mlx_ptr;
 	void	*win_ptr;
+	t_img	*img;
 
 	params = malloc(sizeof(t_param));
 	if (!params)
@@ -34,6 +35,13 @@ t_param	*params_build(t_dot **matrix)
 		ft_print_error("mlx_init error");
 	params->mlx_ptr = mlx_ptr;
 	params->win_ptr = win_ptr;
+	img = malloc(sizeof(t_img));
+	if (!img)
+		ft_print_error("Malloc error");
+	img->img = mlx_new_image(params->mlx_ptr, params->win_x, params->win_y);
+	img->addr = mlx_get_data_addr(
+			img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
+	params->img = img;
 	return (params);
 }
 

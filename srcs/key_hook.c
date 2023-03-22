@@ -96,11 +96,12 @@ int	key_hook(int key, t_param *params)
 {
 	if (is_key(key))
 	{
-		mlx_clear_window(params->mlx_ptr, params->win_ptr);
+//		mlx_clear_window(params->mlx_ptr, params->win_ptr);
+//		mlx_destroy_image(params->mlx_ptr, params->img->img);
 		update_params(key, params);
 		update_params_ext(key, params);
 		print_menu(params);
-		draw(params);
+		tmp_draw(params);
 	}
 	return (0);
 }

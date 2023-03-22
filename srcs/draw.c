@@ -85,6 +85,17 @@ static float	get_max(float step_x, float step_y)
 	return (max);
 }
 
+void	img_pix_put(t_img *img, int x, int y, int color)
+{
+	char	*pixel;
+
+	if (x >= 0 && x < 800 && y >= 0 && y < 800)
+	{
+		pixel = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+		*(int *)pixel = color;
+	}
+}
+
 /**
  * Draw a line between two points using Bresenham's line algorithm
  * @param a t_dot
@@ -107,11 +118,11 @@ static void	line(t_dot a, t_dot b, t_param *params)
 	color = get_color(a, b, params);
 	while ((int)(a.x - b.x) || (int)(a.y - b.y))
 	{
-		mlx_pixel_put(params->mlx_ptr, params->win_ptr, a.x, a.y, color);
+		img_pix_put(params->img, a.x, a.y, color);
 		a.x += step_x;
 		a.y += step_y;
-		if (a.x > params->win_x || a.y > params->win_y || a.y < 0 || a.x < 0)
-			break ;
+//		if (a.x > params->win_x || a.y > params->win_y || a.y < 0 || a.x < 0)
+//			break ;
 	}
 }
 
@@ -121,10 +132,9 @@ static void	line(t_dot a, t_dot b, t_param *params)
  */
 void	draw(t_param *params)
 {
-	int	y;
-	int	x;
+	int		y;
+	int		x;
 
-	print_menu(params);
 	y = 0;
 	while (params->matrix[y])
 	{
@@ -141,4 +151,17 @@ void	draw(t_param *params)
 		}
 		y++;
 	}
+	mlx_put_image_to_window(params->mlx_ptr, params->win_ptr, params->img->img, 0, 0);
+//	params->img->addr = mlx_get_data_addr(
+//			params->img->img, &params->img->bits_per_pixel, &params->img->line_length, &params->img->endian);
+	print_menu(params);
+}
+
+void tmp_draw(t_param *params)
+{
+	mlx_destroy_image(params->mlx_ptr, params->img->img);
+//	mlx_clear_window(params->mlx_ptr, params->win_ptr);
+	params->img->img = mlx_new_image(params->mlx_ptr, params->win_x, params->win_y);
+	params->img->addr = mlx_get_data_addr(params->img->img, &params->img->bits_per_pixel, &params->img->line_length, &params->img->endian);
+	draw(params);
 }
