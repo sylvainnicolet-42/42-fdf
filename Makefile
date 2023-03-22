@@ -12,7 +12,7 @@
 
 # VARIABLES
 NAME 			= fdf
-CC				= gcc -g
+CC				= gcc -g3 -O3
 FLAGS 			= -Wall -Werror -Wextra
 SANITIZE		= -fsanitize=address
 FRAMEWORK		= -framework OpenGL -framework AppKit
@@ -52,11 +52,11 @@ all:			$(NAME)
 $(NAME): 		$(FDF_OBJ)
 				make -C ft_printf
 				make -C mlx
-				$(CC) $(FLAGS) $(FDF_OBJ) ft_printf/ft_printf.a ft_printf/libft/libft.a -Lmlx -lmlx $(FRAMEWORK) -o $(NAME)
+				$(CC) $(FLAGS) $(SANITIZE) $(FDF_OBJ) ft_printf/ft_printf.a ft_printf/libft/libft.a -Lmlx -lmlx $(FRAMEWORK) -o $(NAME)
 				@echo "$(_SUCCESS)🚀Build FDF!$(_END)"
 
 %.o: %.c
-				$(CC) $(FLAGS) -Imlx -c $< -o $@
+				$(CC) $(FLAGS) $(SANITIZE) -Imlx -c $< -o $@
 
 clean:
 				make clean -C ft_printf

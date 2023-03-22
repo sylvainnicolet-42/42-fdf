@@ -23,6 +23,8 @@ static int	matrix_nb_x(int fd)
 	char	*line;
 
 	line = get_next_line(fd);
+	if (!line)
+		ft_print_error("Not a valid file");
 	nb_x = ft_wdcounter(line, ' ');
 	free(line);
 	return (nb_x);
