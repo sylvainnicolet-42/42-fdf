@@ -120,7 +120,7 @@ typedef struct s_dot
 }	t_dot;
 
 typedef struct s_img {
-	void	*img;
+	void	*img_ptr;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
@@ -157,6 +157,7 @@ void	matrix_set_dots(char *line, t_dot **matrix, int y);
 t_param	*params_build(t_dot **matrix);
 void	reset_params(t_param *params);
 void	draw(t_param *params);
+int		get_color(t_dot a, t_dot b, t_param *params);
 void	print_menu(t_param *params);
 void	refresh_params(t_dot *a, t_dot *b, t_param *params);
 void	x_rotation(t_dot *a, t_dot *b, double alpha);
@@ -189,6 +190,6 @@ int		ft_hex_to_int(char *hex);
 void	ft_print_success(char *str);
 void	ft_print_error(char *str);
 
-void 	tmp_draw(t_param *params);
+void	image_refresh(t_param *params);
 
 #endif

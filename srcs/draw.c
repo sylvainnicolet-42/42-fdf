@@ -13,52 +13,6 @@
 #include "../fdf.h"
 
 /**
- * Get color of points with z value
- * @param params
- */
-static int	get_color_from_params(t_param *params)
-{
-	if (params->color == P_BLACK)
-		return (BLACK);
-	else if (params->color == P_WHITE)
-		return (WHITE);
-	else if (params->color == P_RED)
-		return (RED);
-	else if (params->color == P_GREEN)
-		return (GREEN);
-	else if (params->color == P_BLUE)
-		return (BLUE);
-	else if (params->color == P_YELLOW)
-		return (YELLOW);
-	else if (params->color == P_PINK)
-		return (PINK);
-	else if (params->color == P_CYAN)
-		return (CYAN);
-	else if (params->color == P_ORANGE)
-		return (ORANGE);
-	else
-		return (P_COLOR);
-}
-
-/**
- * Set the color of the line
- * @param a t_dot
- * @param b t_dot
- * @return int color
- */
-static int	get_color(t_dot a, t_dot b, t_param *params)
-{
-	(void) params;
-	if (a.color)
-		return (a.color);
-	else if (b.color)
-		return (b.color);
-	if (a.has_height == 1 || b.has_height == 1)
-		return (get_color_from_params(params));
-	return (P_COLOR_GRID);
-}
-
-/**
  * Get the max
  * @param step_x
  * @param step_y
@@ -85,13 +39,15 @@ static float	get_max(float step_x, float step_y)
 	return (max);
 }
 
-void	img_pix_put(t_img *img, int x, int y, int color)
+void	img_pix_put(t_param *params, int x, int y, int color)
 {
 	char	*pixel;
 
-	if (x >= 0 && x < 800 && y >= 0 && y < 800)
+	if (x >= 0 && x < params->win_x && y >= 0 && y < params->win_y)
 	{
-		pixel = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+		pixel = params->img->addr
+			+ (y * params->img->line_length
+				+ x * (params->img->bits_per_pixel / 8));
 		*(int *)pixel = color;
 	}
 }
@@ -118,11 +74,9 @@ static void	line(t_dot a, t_dot b, t_param *params)
 	color = get_color(a, b, params);
 	while ((int)(a.x - b.x) || (int)(a.y - b.y))
 	{
-		img_pix_put(params->img, a.x, a.y, color);
+		img_pix_put(params, a.x, a.y, color);
 		a.x += step_x;
 		a.y += step_y;
-//		if (a.x > params->win_x || a.y > params->win_y || a.y < 0 || a.x < 0)
-//			break ;
 	}
 }
 
@@ -151,17 +105,7 @@ void	draw(t_param *params)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(params->mlx_ptr, params->win_ptr, params->img->img, 0, 0);
-//	params->img->addr = mlx_get_data_addr(
-//			params->img->img, &params->img->bits_per_pixel, &params->img->line_length, &params->img->endian);
+	mlx_put_image_to_window(
+		params->mlx_ptr, params->win_ptr, params->img->img_ptr, 0, 0);
 	print_menu(params);
-}
-
-void tmp_draw(t_param *params)
-{
-	mlx_destroy_image(params->mlx_ptr, params->img->img);
-//	mlx_clear_window(params->mlx_ptr, params->win_ptr);
-	params->img->img = mlx_new_image(params->mlx_ptr, params->win_x, params->win_y);
-	params->img->addr = mlx_get_data_addr(params->img->img, &params->img->bits_per_pixel, &params->img->line_length, &params->img->endian);
-	draw(params);
 }

@@ -1,6 +1,6 @@
 Set dot in Matrix
 ```C
-static void matrix_set_dots(char *line, t_dot **matrix, int y)  
+void    matrix_set_dots(char *line, t_dot **matrix, int y)  
 {  
    char   **dots;  
    int       x;  
@@ -9,7 +9,7 @@ static void matrix_set_dots(char *line, t_dot **matrix, int y)
    x = 0;  
    while (dots[x])  
    {  
-      matrix[y][x].z = ft_atoi(dots[x]);  
+      set_dot_color(dots, matrix, x, y);  
       matrix[y][x].x = x;  
       matrix[y][x].y = y;  
       matrix[y][x].is_last = 0;  
@@ -17,6 +17,6 @@ static void matrix_set_dots(char *line, t_dot **matrix, int y)
       x++;  
    }  
    free(dots);  
-   matrix[y][x -1].is_last = 1;  
+   matrix[y][x - 1].is_last = 1;  
 }
 ```

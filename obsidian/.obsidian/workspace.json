@@ -15,30 +15,14 @@
               "state": {
                 "file": "FDF.canvas",
                 "viewState": {
-                  "x": -874.1065497169197,
-                  "y": 149.75538717918516,
-                  "zoom": -0.1873917643229166
-                }
-              }
-            }
-          },
-          {
-            "id": "11f1fd331a98e690",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "FDF.canvas",
-                "viewState": {
-                  "x": 1973.7933018407323,
-                  "y": 196.19072716100186,
-                  "zoom": 0.08036295572916771
+                  "x": 4144.5331442434945,
+                  "y": 1193.1419183608934,
+                  "zoom": -2.6626342773437517
                 }
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -165,8 +149,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "11f1fd331a98e690",
+  "active": "c0f43a0a9ea61b6a",
   "lastOpenFiles": [
+    "code/create_mlx.md",
+    "code/create_img.md",
+    "code/s_img.md",
+    "code/draw_color.md",
+    "code/image_refresh.md",
+    "code/hande_event.md",
+    "FDF.canvas",
+    "ph.md",
     "maps.md",
     "code/behaviour.md",
     "code/refresh_params.md",

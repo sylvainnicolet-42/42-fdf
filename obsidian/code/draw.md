@@ -5,7 +5,6 @@ void    draw(t_param *params)
    int    y;  
    int    x;  
   
-   print_menu(params);  
    y = 0;  
    while (params->matrix[y])  
    {  
@@ -26,6 +25,9 @@ void    draw(t_param *params)
          x++;  
       }  
       y++;  
-   }  
+   }
+   mlx_put_image_to_window(  
+     params->mlx_ptr, params->win_ptr, params->img->img_ptr, 0, 0);  
+   print_menu(params);
 }
 ```

@@ -32,6 +32,7 @@ FDF_SRC			= ./srcs/fdf.c \
 				  ./srcs/utils/ft_wdcounter.c \
 				  ./srcs/params.c \
 				  ./srcs/draw.c \
+				  ./srcs/draw_color.c \
 				  ./srcs/menu.c \
 				  ./srcs/behaviour.c \
 				  ./srcs/behaviour_ext.c \
@@ -39,6 +40,7 @@ FDF_SRC			= ./srcs/fdf.c \
 				  ./srcs/mouse_hook.c \
 				  ./srcs/fdf_close.c \
 				  ./srcs/handle_event.c \
+				  ./srcs/image_refresh.c \
 
 # COLORS
 _END=$'\x1b[0m'

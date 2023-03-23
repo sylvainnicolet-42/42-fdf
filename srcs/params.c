@@ -12,6 +12,34 @@
 
 #include "../fdf.h"
 
+static void	create_mlx(t_param *params)
+{
+	params->mlx_ptr = mlx_init();
+	if (!params->mlx_ptr)
+		ft_print_error("mlx_init error");
+	params->win_ptr = mlx_new_window(
+			params->mlx_ptr, params->win_x, params->win_y, "FDF");
+	if (!params->win_ptr)
+		ft_print_error("mlx_new_window error");
+}
+
+static void	create_img(t_param *params)
+{
+	t_img	*img;
+
+	img = malloc(sizeof(t_img));
+	if (!img)
+		ft_print_error("Malloc error");
+	img->img_ptr = mlx_new_image(
+			params->mlx_ptr, params->win_x, params->win_y);
+	if (!img->img_ptr)
+		ft_print_error("mlx_new_image error");
+	img->addr = mlx_get_data_addr(
+			img->img_ptr, &img->bits_per_pixel,
+			&img->line_length, &img->endian);
+	params->img = img;
+}
+
 /**
  * Build the parameters structure
  * @param matrix The matrix of t_dot
@@ -20,28 +48,14 @@
 t_param	*params_build(t_dot **matrix)
 {
 	t_param	*params;
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_img	*img;
 
 	params = malloc(sizeof(t_param));
 	if (!params)
 		ft_print_error("Malloc error");
 	params->matrix = matrix;
 	reset_params(params);
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, params->win_x, params->win_y, "FDF");
-	if (!mlx_ptr || !win_ptr)
-		ft_print_error("mlx_init error");
-	params->mlx_ptr = mlx_ptr;
-	params->win_ptr = win_ptr;
-	img = malloc(sizeof(t_img));
-	if (!img)
-		ft_print_error("Malloc error");
-	img->img = mlx_new_image(params->mlx_ptr, params->win_x, params->win_y);
-	img->addr = mlx_get_data_addr(
-			img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
-	params->img = img;
+	create_mlx(params);
+	create_img(params);
 	return (params);
 }
 

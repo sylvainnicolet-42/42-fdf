@@ -47,10 +47,9 @@ int	mouse_hook(int button, int x, int y, t_param *params)
 	(void) y;
 	if (is_button(button))
 	{
-//		mlx_clear_window(params->mlx_ptr, params->win_ptr);
 		update_params(button, params);
 		print_menu(params);
-		tmp_draw(params);
+		image_refresh(params);
 	}
 	return (0);
 }
