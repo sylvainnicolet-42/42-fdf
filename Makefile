@@ -54,11 +54,11 @@ all:			$(NAME)
 $(NAME): 		$(FDF_OBJ)
 				make -C ft_printf
 				make -C mlx
-				$(CC) $(FLAGS) $(SANITIZE) $(FDF_OBJ) ft_printf/ft_printf.a ft_printf/libft/libft.a -Lmlx -lmlx $(FRAMEWORK) -o $(NAME)
+				$(CC) $(FLAGS) $(FDF_OBJ) ft_printf/ft_printf.a ft_printf/libft/libft.a -Lmlx -lmlx $(FRAMEWORK) -o $(NAME)
 				@echo "$(_SUCCESS)🚀Build FDF!$(_END)"
 
 %.o: %.c
-				$(CC) $(FLAGS) $(SANITIZE) -Imlx -c $< -o $@
+				$(CC) $(FLAGS) -Imlx -c $< -o $@
 
 clean:
 				make clean -C ft_printf
