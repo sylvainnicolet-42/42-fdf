@@ -22,8 +22,10 @@ void    shifting(t_dot *a, t_dot *b, t_param *params)
 ```
 
 ```C
+// Ce code transforme les coordonnées 3D de deux points `a` et `b` en coordonnées isométriques 2D.
 void    isometric(t_dot *a, t_dot *b, t_param *params)  
 {  
+   // cette ligne calcule la projection isométrique de la coordonnée x de `a` en soustrayant sa coordonnée y, puis en multipliant le résultat par le cosinus de l'angle de vue défini dans les paramètres `params`. Cela donne une projection de la coordonnée x en perspective isométrique.
    a->x = (a->x - a->y) * cos(params->angle);  
    a->y = (a->x + a->y) * sin(params->angle) - a->z;  
    b->x = (b->x - b->y) * cos(params->angle);  

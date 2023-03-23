@@ -15,9 +15,9 @@
               "state": {
                 "file": "FDF.canvas",
                 "viewState": {
-                  "x": 4144.5331442434945,
-                  "y": 1193.1419183608934,
-                  "zoom": -2.6626342773437517
+                  "x": 2236.476465705304,
+                  "y": 1776.1311363798518,
+                  "zoom": -1.6098304018517906
                 }
               }
             }
@@ -151,13 +151,14 @@
   },
   "active": "c0f43a0a9ea61b6a",
   "lastOpenFiles": [
+    "matrix.md",
+    "FDF.canvas",
     "code/create_mlx.md",
     "code/create_img.md",
     "code/s_img.md",
     "code/draw_color.md",
     "code/image_refresh.md",
     "code/hande_event.md",
-    "FDF.canvas",
     "ph.md",
     "maps.md",
     "code/behaviour.md",
